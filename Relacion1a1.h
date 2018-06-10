@@ -79,6 +79,8 @@ public:
     //MOD:
     int numRelaciones();
 
+    void listar();
+
 private:
     template <typename V, typename W>
     struct Elem{
@@ -150,7 +152,7 @@ void Relacion1a1<T,S>::agregarRelacion(T e1, S e2){
 }
 
 template <typename T, typename S>
-void Relacion1a1::eliminarRelacion(T e1, S e2) {
+void Relacion1a1<T,S>::eliminarRelacion(T e1, S e2) {
     Elem<T,S> *temp = primero;
     Elem<T,S> *anterior = NULL;
     while(temp != NULL && temp->elemento1 != e1){
@@ -169,7 +171,7 @@ void Relacion1a1::eliminarRelacion(T e1, S e2) {
 }
 
 template <typename T, typename S>
-void Relacion1a1::modificarImagen(T e1, S nE) {
+void Relacion1a1<T,S>::modificarImagen(T e1, S nE) {
     Elem<T,S> *temp = primero;
     while(temp != NULL && temp->elemento1 != e1){
         temp = temp->sgt;
@@ -180,25 +182,85 @@ void Relacion1a1::modificarImagen(T e1, S nE) {
 }
 
 template <typename T, typename S>
-bool Relacion1a1::existeRelacion(T e1, S e2) {}
-
-template <typename T, typename S>
-S Relacion1a1::imagen(T e) {}
-
-template <typename T, typename S>
-T Relacion1a1::preImagen(S e) {}
-
-template <typename T, typename S>
-bool Relacion1a1::estaEnDominio(T e) {}
-
-template <typename T, typename S>
-bool Relacion1a1::estaEnCodominio(S e) {}
-
-template <typename T, typename S>
-int Relacion1a1::numRelaciones() {
-    nElementos++;
+bool Relacion1a1<T,S>::existeRelacion(T e1, S e2) {
+    Elem<T,S> *temp = primero;
+    while(temp != NULL && temp->elemento1 != e1){
+        temp = temp->sgt;
+    }
+    if(temp->elemento2 == e2){
+        return true;
+    } else{
+        return false;
+    }
 }
 
+template <typename T, typename S>
+S Relacion1a1<T,S>::imagen(T e) {
+    Elem<T,S> *temp = primero;
+    while(temp != NULL && temp->elemento1 != e){
+        temp = temp->sgt;
+    }
+    if(temp->elemento1 == e){
+        return temp->elemento2;
+    } else{
+        return NULL;
+    }
+}
+
+template <typename T, typename S>
+T Relacion1a1<T,S>::preImagen(S e) {
+    Elem<T,S> *temp = primero;
+    while(temp != NULL && temp->elemento2 != e){
+        temp = temp->sgt;
+    }
+    if(temp->elemento2 == e){
+        return temp->elemento1;
+    } else{
+        return NULL;
+    }
+}
+
+template <typename T, typename S>
+bool Relacion1a1<T,S>::estaEnDominio(T e) {
+    Elem<T,S> *temp = primero;
+    bool existe = false;
+    while(temp != NULL && !existe){
+        if(temp->elemento1 == e){
+            existe = true;
+        } else {
+            temp = temp->sgt;
+        }
+    }
+    return existe;
+}
+
+template <typename T, typename S>
+bool Relacion1a1<T,S>::estaEnCodominio(S e) {
+    Elem<T,S> *temp = primero;
+    bool existe = false;
+    while(temp != NULL && !existe){
+        if(temp->elemento2 == e){
+            existe = true;
+        } else {
+            temp = temp->sgt;
+        }
+    }
+    return existe;
+}
+
+template <typename T, typename S>
+int Relacion1a1<T,S>::numRelaciones() {
+    return  nElementos;
+}
+
+template <typename T, typename S>
+void Relacion1a1<T,S>::listar() {
+    Elem<T,S> *aux = primero;
+    while(aux != NULL) {
+        cout << aux->elemento1 << "-" << aux->elemento2 << endl;
+        aux = aux->sgt;
+    }
+}
 
 
 
