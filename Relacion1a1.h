@@ -9,7 +9,7 @@
 
 using namespace std;
 
-template < typename T >
+template < typename T, typename S >
 
 class Relacion1a1 {
 public:
@@ -34,9 +34,50 @@ public:
     //MOD:
     bool vacia();
 
+    //EFE:
+    //REQ:
+    //MOD:
+    void agregarRelacion(T e1, S e2);
 
+    //EFE:
+    //REQ:
+    //MOD:
+    void eliminarRelacion(T e1, S e2);
 
-    
+    //EFE:
+    //REQ:
+    //MOD:
+    void modificarImagen(T e1, S nE);
+
+    //EFE:
+    //REQ:
+    //MOD:
+    bool existeRelacion(T e1, S e2);
+
+    //EFE:
+    //REQ:
+    //MOD:
+    S imagen(T e);
+
+    //EFE:
+    //REQ:
+    //MOD:
+    T preImagen(S e);
+
+    //EFE:
+    //REQ:
+    //MOD:
+    bool estaEnDominio(T e);
+
+    //EFE:
+    //REQ:
+    //MOD:
+    bool estaEnCodominio(S e);
+
+    //EFE:
+    //REQ:
+    //MOD:
+    int numRelaciones();
 
 private:
     template <typename V, typename W>
@@ -52,46 +93,113 @@ private:
             sgt = NULL;
         }
     };
-    Elem<T> *primero;
+    Elem<T,S> *primero;
     int nElementos;
 };
 
-template <typename T>
-void Relacion1a1<T>::crear() {
+template <typename T, typename S>
+void Relacion1a1<T,S>::crear() {
     primero = NULL;
+    nElementos = 0;
 }
 
-template <typename T>
-void Relacion1a1<T>::destruir() {
-    Elem<T> *anterior = NULL;
-    Elem<T> *temp = primero;
+template <typename T, typename S>
+void Relacion1a1<T,S>::destruir() {
+    Elem<T,S> *anterior = NULL;
+    Elem<T,S> *temp = primero;
     while(temp != NULL){
         anterior = temp;
         temp = temp->sgt;
         delete anterior;
     }
+    nElementos = -99;
 }
 
-template <typename T>
-void Relacion1a1<T>::vaciar() {
-    Elem<T> *anterior;
-    Elem<T> *temp = primero;
+template <typename T, typename S>
+void Relacion1a1<T,S>::vaciar() {
+    Elem<T,S> *anterior;
+    Elem<T,S> *temp = primero;
     while(temp != NULL){
         anterior = temp;
         temp = temp->sgt;
         delete anterior;
     }
     primero = NULL;
+    nElementos = 0;
 }
 
-template <typename T>
-bool Relacion1a1<T>::vacia() {
+template <typename T, typename S>
+bool Relacion1a1<T,S>::vacia() {
     if(nElementos == 0){
         return true;
     }else{
         return false;
     }
 }
+
+template <typename T, typename S>
+void Relacion1a1<T,S>::agregarRelacion(T e1, S e2){
+    Elem<T,S> *nuevo = new Elem<T,S>(e1,e2);
+    if(nElementos == 0){
+        primero = nuevo;
+    } else{
+        nuevo->sgt = primero;
+        primero = nuevo;
+    }
+    nElementos++;
+}
+
+template <typename T, typename S>
+void Relacion1a1::eliminarRelacion(T e1, S e2) {
+    Elem<T,S> *temp = primero;
+    Elem<T,S> *anterior = NULL;
+    while(temp != NULL && temp->elemento1 != e1){
+        anterior = temp;
+        temp = temp->sgt;
+    }
+    if(anterior == 0){ // es el primer elemento de la lista
+        primero = primero->sgt;
+        delete temp;
+        nElementos--;
+    } else{
+        anterior->sgt = temp->sgt;
+        delete temp;
+        nElementos--;
+    }
+}
+
+template <typename T, typename S>
+void Relacion1a1::modificarImagen(T e1, S nE) {
+    Elem<T,S> *temp = primero;
+    while(temp != NULL && temp->elemento1 != e1){
+        temp = temp->sgt;
+    }
+    if(temp != NULL){
+        temp->elemento2 = nE;
+    }
+}
+
+template <typename T, typename S>
+bool Relacion1a1::existeRelacion(T e1, S e2) {}
+
+template <typename T, typename S>
+S Relacion1a1::imagen(T e) {}
+
+template <typename T, typename S>
+T Relacion1a1::preImagen(S e) {}
+
+template <typename T, typename S>
+bool Relacion1a1::estaEnDominio(T e) {}
+
+template <typename T, typename S>
+bool Relacion1a1::estaEnCodominio(S e) {}
+
+template <typename T, typename S>
+int Relacion1a1::numRelaciones() {
+    nElementos++;
+}
+
+
 
 
 
