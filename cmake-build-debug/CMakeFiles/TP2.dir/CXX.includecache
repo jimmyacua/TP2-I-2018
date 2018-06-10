@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/felipe/CLionProjects/TP2-I-2018/Diccionario.cpp
+Diccionario.h
+/home/felipe/CLionProjects/TP2-I-2018/Diccionario.h
+iostream
+-
+
+/home/felipe/CLionProjects/TP2-I-2018/Diccionario.h
+
+/home/felipe/CLionProjects/TP2-I-2018/main.cpp
+iostream
+-
+
