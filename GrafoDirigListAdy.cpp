@@ -58,18 +58,53 @@ string ListaAdyacencia::etiqueta(vertice v) {
     return v->etiqueta;
 }
 
-void ListaAdyacencia::agregarArista(vertice v1, vertice v2) {
-    v1->ady->destino = v2;
+void ListaAdyacencia::agregarArista(vertice v1, vertice v2, int p) {
+    adyacente aris = new Arista(p);
+    if(v1->ady == NULL) { //si es el primer adyacente que se agrega
+        v1->ady = aris;
+        aris->destino = v2;
+    } else{
+        adyacente aux = v1->ady;
+        while(aux->sgt != NULL){
+            aux = aux->sgt;
+        }
+        aris->destino = v2;
+        aux->sgt = aris;
+    }
+
 }
 
 void ListaAdyacencia::eliminarArista(vertice v1, vertice v2) {
-    if(v1->ady->destino == v2){
-        v1->ady->destino = NULL;
+    adyacente aux = v1->ady;
+    adyacente anterior = NULL;
+    while(aux->destino != v2){
+        anterior = aux;
+        aux = aux->sgt;
     }
+    if(anterior == NULL){
+        v1->ady = v1->ady->sgt;
+        delete aux;
+    } else{
+        anterior->sgt = aux->sgt;
+        delete aux;
+    }
+
 }
 
 void ListaAdyacencia::modificarPeso(vertice v1, vertice v2, int p) {
-    v1->ady->peso = p;
+    adyacente aux = v1->ady;
+    while(aux->destino != v2){
+        aux = aux->sgt;
+    }
+    aux->peso = p;
+}
+
+int ListaAdyacencia::peso(vertice v1, vertice v2) {
+    adyacente aux = v1->ady;
+    while(aux->destino != v2){
+        aux = aux->sgt;
+    }
+    return aux->peso;
 }
 
 vertice ListaAdyacencia::primerVertice() {
@@ -93,9 +128,17 @@ vertice ListaAdyacencia::sgtVrtAdy(vertice v, vertice ad) {
     while(temp != NULL && temp->destino != ad){
         temp = temp->sgt;
     }
-    return temp->destino;
+    return temp->sgt->destino;
 }
 
 int ListaAdyacencia::numVertices() {
     return nVertices;
+}
+
+vertice ListaAdyacencia::traduceVrt(string e) {
+    vertice temp = cabeza;
+    while(temp != NULL && temp->etiqueta != e){
+        temp = temp->sgt;
+    }
+    return temp;
 }

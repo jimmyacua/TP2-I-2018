@@ -94,7 +94,7 @@ public:
     //EFE:
     //REQ:
     //MOD:
-    void agregarArista(vertice v1, vertice v2);
+    void agregarArista(vertice v1, vertice v2, int p);
 
     //EFE:
     //REQ:
@@ -135,6 +135,8 @@ public:
     //REQ:
     //MOD:
     int numVertices();
+
+    vertice traduceVrt(string e);
 
 private:
     int nVertices;
