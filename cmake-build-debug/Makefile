@@ -150,6 +150,60 @@ Diccionario.cpp.s:
 	$(MAKE) -f CMakeFiles/TP2.dir/build.make CMakeFiles/TP2.dir/Diccionario.cpp.s
 .PHONY : Diccionario.cpp.s
 
+GrafoMatriz.o: GrafoMatriz.cpp.o
+
+.PHONY : GrafoMatriz.o
+
+# target to build an object file
+GrafoMatriz.cpp.o:
+	$(MAKE) -f CMakeFiles/TP2.dir/build.make CMakeFiles/TP2.dir/GrafoMatriz.cpp.o
+.PHONY : GrafoMatriz.cpp.o
+
+GrafoMatriz.i: GrafoMatriz.cpp.i
+
+.PHONY : GrafoMatriz.i
+
+# target to preprocess a source file
+GrafoMatriz.cpp.i:
+	$(MAKE) -f CMakeFiles/TP2.dir/build.make CMakeFiles/TP2.dir/GrafoMatriz.cpp.i
+.PHONY : GrafoMatriz.cpp.i
+
+GrafoMatriz.s: GrafoMatriz.cpp.s
+
+.PHONY : GrafoMatriz.s
+
+# target to generate assembly for a file
+GrafoMatriz.cpp.s:
+	$(MAKE) -f CMakeFiles/TP2.dir/build.make CMakeFiles/TP2.dir/GrafoMatriz.cpp.s
+.PHONY : GrafoMatriz.cpp.s
+
+ListaIndexadaLSE.o: ListaIndexadaLSE.cpp.o
+
+.PHONY : ListaIndexadaLSE.o
+
+# target to build an object file
+ListaIndexadaLSE.cpp.o:
+	$(MAKE) -f CMakeFiles/TP2.dir/build.make CMakeFiles/TP2.dir/ListaIndexadaLSE.cpp.o
+.PHONY : ListaIndexadaLSE.cpp.o
+
+ListaIndexadaLSE.i: ListaIndexadaLSE.cpp.i
+
+.PHONY : ListaIndexadaLSE.i
+
+# target to preprocess a source file
+ListaIndexadaLSE.cpp.i:
+	$(MAKE) -f CMakeFiles/TP2.dir/build.make CMakeFiles/TP2.dir/ListaIndexadaLSE.cpp.i
+.PHONY : ListaIndexadaLSE.cpp.i
+
+ListaIndexadaLSE.s: ListaIndexadaLSE.cpp.s
+
+.PHONY : ListaIndexadaLSE.s
+
+# target to generate assembly for a file
+ListaIndexadaLSE.cpp.s:
+	$(MAKE) -f CMakeFiles/TP2.dir/build.make CMakeFiles/TP2.dir/ListaIndexadaLSE.cpp.s
+.PHONY : ListaIndexadaLSE.cpp.s
+
 main.o: main.cpp.o
 
 .PHONY : main.o
@@ -189,6 +243,12 @@ help:
 	@echo "... Diccionario.o"
 	@echo "... Diccionario.i"
 	@echo "... Diccionario.s"
+	@echo "... GrafoMatriz.o"
+	@echo "... GrafoMatriz.i"
+	@echo "... GrafoMatriz.s"
+	@echo "... ListaIndexadaLSE.o"
+	@echo "... ListaIndexadaLSE.i"
+	@echo "... ListaIndexadaLSE.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

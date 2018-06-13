@@ -3,5 +3,5 @@ project(TP2)
 
 set(CMAKE_CXX_STANDARD 11)
 
-add_executable(TP2 main.cpp Diccionario.cpp Diccionario.h Relacion1a1.h)
+add_executable(TP2 main.cpp Diccionario.cpp Diccionario.h Relacion1a1.h GrafoMatriz.cpp GrafoMatriz.h ListaIndexadaLSE.cpp ListaIndexadaLSE.h)
 
