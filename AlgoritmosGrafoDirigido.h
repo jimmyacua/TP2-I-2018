@@ -56,6 +56,7 @@ private:
     //MOD:
     void profPrimeroRec(grafo, vertice);
     Diccionario dvv;
+    relacion relacion1a1;
 
 };
 

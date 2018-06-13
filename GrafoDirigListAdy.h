@@ -14,16 +14,19 @@ struct Vertice{
     string etiqueta;
     Vertice *sgt;
     struct Arista *ady;
+    int numVrtAdy;
 
     Vertice(){
         etiqueta = "";
         sgt = NULL;
         ady = NULL;
+        numVrtAdy = 0;
     };
 
     Vertice(string e){
         etiqueta = e;
         ady = NULL;
+        numVrtAdy = 0;
     };
 
 };
@@ -135,6 +138,16 @@ public:
     //REQ:
     //MOD:
     int numVertices();
+
+    //EFE:
+    //REQ:
+    //MOD:
+    int numVrtAdyacentes(vertice v);
+
+    //EFE:
+    //REQ:
+    //MOD:
+    bool existeArista(vertice v1, vertice v2);
 
     vertice traduceVrt(string e);
 

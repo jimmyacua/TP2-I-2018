@@ -28,8 +28,27 @@ int main(){
     grafo.agregarArista(grafo.traduceVrt("f"),grafo.traduceVrt("b"), 1);
     grafo.agregarArista(grafo.traduceVrt("f"),grafo.traduceVrt("e"), 1);
 
+    ListaAdyacencia g2;
+    g2.crear();
+    g2.agregarVertice("g");
+    g2.agregarVertice("e");
+    g2.agregarVertice("d");
+    g2.agregarVertice("c");
+    g2.agregarVertice("b");
+    g2.agregarVertice("a");
+    g2.agregarArista(g2.traduceVrt("a"),g2.traduceVrt("b"), 3);
+    g2.agregarArista(g2.traduceVrt("a"),g2.traduceVrt("e"), 5);
+    g2.agregarArista(g2.traduceVrt("a"),g2.traduceVrt("g"), 6);
+    g2.agregarArista(g2.traduceVrt("b"),g2.traduceVrt("e"), 2);
+    g2.agregarArista(g2.traduceVrt("c"),g2.traduceVrt("d"), 1);
+    g2.agregarArista(g2.traduceVrt("d"),g2.traduceVrt("b"), 1);
+    g2.agregarArista(g2.traduceVrt("e"),g2.traduceVrt("d"), 1);
+    g2.agregarArista(g2.traduceVrt("g"),g2.traduceVrt("b"), 1);
+    g2.agregarArista(g2.traduceVrt("g"),g2.traduceVrt("e"), 1);
+
     AlgoritmosGrafoDirigido alg;
-    alg.profundidadPrimero(grafo);
+    bool r = alg.iguales(grafo, g2);
+    cout << r;
 
 
 
