@@ -29,7 +29,7 @@ int main(){
     grafo.agregarArista(grafo.traduceVrt("f"),grafo.traduceVrt("e"), 1);
 
     AlgoritmosGrafoDirigido alg;
-    alg.profundidadPrimero(grafo);
+    //alg.profundidadPrimero(grafo);
 
 
 
