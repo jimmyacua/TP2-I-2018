@@ -175,7 +175,7 @@
   </component>
   <component name="RunManager" selected="Application.TP2">
     <configuration name="Build All" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" CONFIG_NAME="Debug" EXPLICIT_BUILD_TARGET_NAME="all" />
-    <configuration name="TP2" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="TP2" TARGET_NAME="TP2" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="TP2" RUN_TARGET_NAME="TP2" />
+    <configuration name="TP2" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="TP2-I-2018" TARGET_NAME="TP2" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="TP2-I-2018" RUN_TARGET_NAME="TP2" />
     <list>
       <item itemvalue="Application.Build All" />
       <item itemvalue="Application.TP2" />
