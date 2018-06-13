@@ -3,6 +3,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/TP2.dir/Diccionario.cpp.o"
   "CMakeFiles/TP2.dir/GrafoMatriz.cpp.o"
   "CMakeFiles/TP2.dir/ListaIndexadaLSE.cpp.o"
+  "CMakeFiles/TP2.dir/GrafoDirigListAdy.cpp.o"
   "TP2.pdb"
   "TP2"
 )

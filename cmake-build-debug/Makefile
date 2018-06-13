@@ -150,6 +150,33 @@ Diccionario.cpp.s:
 	$(MAKE) -f CMakeFiles/TP2.dir/build.make CMakeFiles/TP2.dir/Diccionario.cpp.s
 .PHONY : Diccionario.cpp.s
 
+GrafoDirigListAdy.o: GrafoDirigListAdy.cpp.o
+
+.PHONY : GrafoDirigListAdy.o
+
+# target to build an object file
+GrafoDirigListAdy.cpp.o:
+	$(MAKE) -f CMakeFiles/TP2.dir/build.make CMakeFiles/TP2.dir/GrafoDirigListAdy.cpp.o
+.PHONY : GrafoDirigListAdy.cpp.o
+
+GrafoDirigListAdy.i: GrafoDirigListAdy.cpp.i
+
+.PHONY : GrafoDirigListAdy.i
+
+# target to preprocess a source file
+GrafoDirigListAdy.cpp.i:
+	$(MAKE) -f CMakeFiles/TP2.dir/build.make CMakeFiles/TP2.dir/GrafoDirigListAdy.cpp.i
+.PHONY : GrafoDirigListAdy.cpp.i
+
+GrafoDirigListAdy.s: GrafoDirigListAdy.cpp.s
+
+.PHONY : GrafoDirigListAdy.s
+
+# target to generate assembly for a file
+GrafoDirigListAdy.cpp.s:
+	$(MAKE) -f CMakeFiles/TP2.dir/build.make CMakeFiles/TP2.dir/GrafoDirigListAdy.cpp.s
+.PHONY : GrafoDirigListAdy.cpp.s
+
 GrafoMatriz.o: GrafoMatriz.cpp.o
 
 .PHONY : GrafoMatriz.o
@@ -243,6 +270,9 @@ help:
 	@echo "... Diccionario.o"
 	@echo "... Diccionario.i"
 	@echo "... Diccionario.s"
+	@echo "... GrafoDirigListAdy.o"
+	@echo "... GrafoDirigListAdy.i"
+	@echo "... GrafoDirigListAdy.s"
 	@echo "... GrafoMatriz.o"
 	@echo "... GrafoMatriz.i"
 	@echo "... GrafoMatriz.s"
