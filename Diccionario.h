@@ -5,7 +5,9 @@
 #ifndef TP2_I_2018_DICCIONARIO_H
 #define TP2_I_2018_DICCIONARIO_H
 
-typedef int elemento;
+#include "GrafoDirigListAdy.h"
+
+typedef vertice elemento;
 
 struct Caja{
 public:
