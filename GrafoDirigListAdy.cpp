@@ -9,11 +9,43 @@ void ListaAdyacencia::crear() {
     nVertices = 0;
 }
 
-void ListaAdyacencia::destruir() {}
+void ListaAdyacencia::destruir() {
+    vertice temp = cabeza;
+    vertice anterior;
+    adyacente ad = temp->ady;
+    adyacente antAdy;
+    while(temp != NULL){
+        while(ad != NULL){
+            antAdy = ad;
+            ad = ad->sgt;
+            delete antAdy;
+        }
+        anterior = temp;
+        temp = temp->sgt;
+        delete anterior;
+    }
+}
 
-void ListaAdyacencia::vaciar() {}
+void ListaAdyacencia::vaciar() {
+    vertice temp = cabeza;
+    vertice anterior;
+    adyacente ad = temp->ady;
+    adyacente antAdy;
+    while(temp != NULL){
+        while(ad != NULL){
+            antAdy = ad;
+            ad = ad->sgt;
+            delete antAdy;
+        }
+        anterior = temp;
+        temp = temp->sgt;
+        delete anterior;
+    }
+    cabeza = new Vertice();
+    nVertices = 0;
+}
 
-bool ListaAdyacencia::vacia() {
+bool ListaAdyacencia::vacio() {
     if(nVertices == 0){
         return true;
     } else{
@@ -111,7 +143,7 @@ vertice ListaAdyacencia::primerVertice() {
     return cabeza;
 }
 
-vertice ListaAdyacencia::sgtVErtice(vertice v) {
+vertice ListaAdyacencia::sgtVertice(vertice v) {
     return v->sgt;
 }
 
@@ -128,7 +160,11 @@ vertice ListaAdyacencia::sgtVrtAdy(vertice v, vertice ad) {
     while(temp != NULL && temp->destino != ad){
         temp = temp->sgt;
     }
-    return temp->sgt->destino;
+    if(temp->sgt != NULL){
+        return temp->sgt->destino;
+    } else{
+        return NULL;
+    }
 }
 
 int ListaAdyacencia::numVertices() {

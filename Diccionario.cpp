@@ -20,7 +20,6 @@ void Diccionario::destruir() {
         temp = temp->sgt;
         delete anterior;
     }
-    cantElementos = 0;
 }
 
 void Diccionario::vaciar() {

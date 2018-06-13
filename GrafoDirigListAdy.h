@@ -69,7 +69,7 @@ public:
     //EFE:
     //REQ:
     //MOD:
-    bool vacia();
+    bool vacio();
 
     //EFE:
     //REQ:
@@ -119,7 +119,7 @@ public:
     //EFE:
     //REQ:
     //MOD:
-    vertice sgtVErtice(vertice v);
+    vertice sgtVertice(vertice v);
 
     //EFE:
     //REQ:
