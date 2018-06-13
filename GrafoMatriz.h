@@ -48,7 +48,7 @@ public:
     //Efecto:
     //Requiere:
     //Modifica:
-    string etiqueta();
+    string etiqueta(vertice);
     //Efecto:
     //Requiere:
     //Modifica:
@@ -64,7 +64,7 @@ public:
     //Efecto:
     //Requiere:
     //Modifica:
-    int peso();
+    int peso(vertice,vertice);
     //Efecto:
     //Requiere:
     //Modifica:
@@ -73,6 +73,10 @@ public:
     //Requiere:
     //Modifica:
     vertice siguieteVertice(vertice);
+    //Efecto:
+    //Requiere:
+    //Modifica:
+    bool hayArista(vertice,vertice);
     //Efecto:
     //Requiere:
     //Modifica:
@@ -85,8 +89,16 @@ public:
     //Requiere:
     //Modifica:
     int numVertices();
+    //Efecto:
+    //Requiere:
+    //Modifica:
+    int numAristas();
+
+    void mostrar();
 private:
     int matrizAdyacencia[20][20];
     int cantVertices;
+    int cantAristas;
+    int ultimoLleno;
     listaInd lista;
 };

@@ -5,14 +5,17 @@
 #ifndef TP1_LISTAINDEXADALSE_H
 #define TP1_LISTAINDEXADALSE_H
 
+#include <string>
+using namespace std;
+
 struct Caja{
 public:
-    int elemento;
+    string elemento;
     Caja* sgt;
     Caja(){
         sgt = nullptr;
     }
-    Caja(int elmt){
+    Caja(string elmt){
         elemento = elmt;
         sgt = nullptr;
     }
@@ -40,7 +43,7 @@ public:
     //Efecto: Insertar un elemento e en el indice i. Hace un corrimiento de los indices presentes
     //Requiere: Indice valido
     //Modifica: Lista L
-    void insertar(int,int);
+    void insertar(string,int);
     //Efecto: Elimina el elemento con el indice i. Hace un corrimiento de los indices presentes
     //Requiere: Indice valido
     //Modifica: Lista L
@@ -48,7 +51,7 @@ public:
     //Efecto: Cambia el elemento con el indice i por el elmento e
     //Requiere: Indice valido
     //Modifica: Lista L
-    void modificarElem(int,int);
+    void modificarElem(string,int);
     //Efecto: Intercambia los elementos con los indices i1 e i2
     //Requiere: Indices validos
     //Modifica: Lista L
@@ -56,7 +59,7 @@ public:
     //Efecto: Retorna el elemento con indice i
     //Requiere: Indice valido
     //Modifica:
-    int recuperar(int);
+    string recuperar(int);
     //Efecto: Retorna la cantidad de elemtos de la lista L
     //Requiere:Lista inicializada
     //Modifica:

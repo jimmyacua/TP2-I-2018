@@ -4,6 +4,7 @@
 
 #include "ListaIndexadaLSE.h"
 #include <iostream>
+#include <string>
 
 using namespace std;
 
@@ -34,7 +35,6 @@ void ListaIndexadaLSE::vaciar(){
     }
     primero = NULL;
     cantElem = 0;
-    //primero->sgt = NULL;
 }
 
 bool ListaIndexadaLSE::vacia(){
@@ -45,7 +45,7 @@ bool ListaIndexadaLSE::vacia(){
     }
 }
 
-void ListaIndexadaLSE::insertar(int elemento,int indice){
+void ListaIndexadaLSE::insertar(string elemento,int indice){
     Caja *nuevo = new Caja(elemento);
     if(cantElem==0){
         primero = nuevo;
@@ -97,7 +97,7 @@ void ListaIndexadaLSE::borrar(int indice){
 
 }
 
-void ListaIndexadaLSE::modificarElem(int elemento,int indice){
+void ListaIndexadaLSE::modificarElem(string elemento,int indice){
     Caja *aux = primero;
     if(indice==1){
         primero->elemento=elemento;
@@ -126,12 +126,12 @@ void ListaIndexadaLSE::intercambiar(int indiceU,int indiceD){
         aux = aux->sgt;
         contador++;
     }
-    int respaldo = pri->elemento;
+    string respaldo = pri->elemento;
     pri->elemento = seg->elemento;
     seg->elemento = respaldo;
 }
 
-int ListaIndexadaLSE::recuperar(int indice){
+string ListaIndexadaLSE::recuperar(int indice){
     Caja *aux = primero;
     if(indice==1){
         return aux->elemento;
