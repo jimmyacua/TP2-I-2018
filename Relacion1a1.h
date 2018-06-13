@@ -184,14 +184,13 @@ void Relacion1a1<T,S>::modificarImagen(T e1, S nE) {
 template <typename T, typename S>
 bool Relacion1a1<T,S>::existeRelacion(T e1, S e2) {
     Elem<T,S> *temp = primero;
-    while(temp != NULL && temp->elemento1 != e1){
+    while(temp != NULL){
+        if(temp->elemento1 == e1 && temp->elemento2 == e2){
+            return true;
+        }
         temp = temp->sgt;
     }
-    if(temp->elemento2 == e2){
-        return true;
-    } else{
-        return false;
-    }
+    return false;
 }
 
 template <typename T, typename S>

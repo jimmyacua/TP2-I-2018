@@ -15,12 +15,13 @@ void AlgoritmosGrafoDirigido::profundidadPrimero(grafo& g) {
             v = g.sgtVertice(v);
         }
         dvv.destruir();
+        cout << "FIN" << endl;
     }
 }
 
 void AlgoritmosGrafoDirigido::profPrimeroRec(grafo g, vertice v) {
     dvv.agregar(v);
-    cout << g.etiqueta(v) << ",";
+    cout << g.etiqueta(v) << " -> ";
     vertice va = g.primerVrtAdy(v);
     while(va != NULL){
         if(!dvv.pertenece(va)){
@@ -77,4 +78,50 @@ bool AlgoritmosGrafoDirigido::iguales(grafo &g1, grafo &g2) {
         relacion1a1.destruir();
     }
     return sonIguales;
+}
+
+grafo AlgoritmosGrafoDirigido::copiarGrafo(grafo &g1) {
+    grafo g2;
+    g2.crear();
+    relacion1a1.crear();
+    vertice v1 = g1.primerVertice();
+    while(v1 != NULL){
+        adyacente ad = v1->ady;
+        g2.agregarVertice(g1.etiqueta(v1));
+        while(ad != NULL){
+            relacion1a1.agregarRelacion(v1,ad->destino);
+            ad = ad->sgt;
+        }
+        v1 = g1.sgtVertice(v1);
+    }
+    v1 = g1.primerVertice();
+    while(v1 != NULL){
+        vertice aux = g1.primerVertice();
+        while(aux != NULL) {
+            if (relacion1a1.existeRelacion(v1, aux)) {
+                g2.agregarArista(g2.traduceVrt(g1.etiqueta(v1)), g1.traduceVrt(g1.etiqueta(aux)), g1.peso(v1, aux));
+            }
+            aux = g1.sgtVertice(aux);
+        }
+        v1 = g1.sgtVertice(v1);
+    }
+    return g2;
+}
+
+void AlgoritmosGrafoDirigido::eliminarVertNoAislado(grafo& g, vertice v) {
+    vertice aux = g.primerVertice();
+    while(aux != NULL){
+        if(aux != v){
+            if(g.existeArista(aux,v)){
+                g.eliminarArista(aux,v);
+            }
+        }
+        aux = g.sgtVertice(aux);
+    }
+    adyacente ad = v->ady;
+    while(ad != NULL){
+        g.eliminarArista(v,ad->destino);
+        ad = ad->sgt;
+    }
+    g.eliminarVertice(v);
 }

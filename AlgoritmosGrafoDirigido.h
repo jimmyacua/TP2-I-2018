@@ -14,7 +14,6 @@
 using namespace std;
 
 typedef ListaAdyacencia grafo;
-typedef Relacion1a1<vertice, vertice> relacion;
 
 
 class AlgoritmosGrafoDirigido {
@@ -42,7 +41,7 @@ public:
     //EFE:
     //REQ:
     //MOD:
-    void copiarGrafo(grafo& g1, grafo g2);
+    grafo copiarGrafo(grafo& g1);
 
     //EFE:
     //REQ:
@@ -56,7 +55,7 @@ private:
     //MOD:
     void profPrimeroRec(grafo, vertice);
     Diccionario dvv;
-    relacion relacion1a1;
+    Relacion1a1<vertice,vertice>  relacion1a1;
 
 };
 

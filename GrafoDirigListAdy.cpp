@@ -153,7 +153,7 @@ vertice ListaAdyacencia::sgtVertice(vertice v) {
 }
 
 vertice ListaAdyacencia::primerVrtAdy(vertice v) {
-    if(v->ady->destino != NULL){
+    if(v->ady != NULL){
         return v->ady->destino;
     } else{
         return NULL;
