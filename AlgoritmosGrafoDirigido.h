@@ -21,7 +21,7 @@ public:
     //EFE:
     //REQ:
     //MOD:
-    void dijkstra(grafo& g);
+    void dijkstra(grafo& g, vertice k);
 
     //EFE:
     //REQ:
@@ -31,7 +31,7 @@ public:
     //EFE:
     //REQ:
     //MOD:
-    void profundidadPrimero(grafo& g);
+    void profundidadPrimero(grafo g);
 
     //EFE:
     //REQ:
@@ -41,7 +41,7 @@ public:
     //EFE:
     //REQ:
     //MOD:
-    grafo copiarGrafo(grafo& g1);
+    grafo copiarGrafo(grafo g1);
 
     //EFE:
     //REQ:
@@ -56,7 +56,6 @@ private:
     void profPrimeroRec(grafo, vertice);
     Diccionario dvv;
     Relacion1a1<vertice,vertice>  relacion1a1;
-
 };
 
 

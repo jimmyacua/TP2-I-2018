@@ -4,7 +4,7 @@
 
 #include "AlgoritmosGrafoDirigido.h"
 
-void AlgoritmosGrafoDirigido::profundidadPrimero(grafo& g) {
+void AlgoritmosGrafoDirigido::profundidadPrimero(grafo g) {
     if(!g.vacio()){
         dvv.crear();
         vertice v = g.primerVertice();
@@ -31,7 +31,54 @@ void AlgoritmosGrafoDirigido::profPrimeroRec(grafo g, vertice v) {
     }
 }
 
-void AlgoritmosGrafoDirigido::dijkstra(grafo &g) {
+void AlgoritmosGrafoDirigido::dijkstra(grafo& g, vertice o) {
+    int size = g.numVertices();
+    int S[size+1];
+    int C[size+1][size+1];
+    vertice v = g.primerVertice();
+    int i = 1;
+    while(i < size+1){
+        int j = 1;
+        vertice v2 = g.primerVertice();
+        while(j < size+1){
+            if(g.existeArista(v,v2)) {
+                C[i][j] = g.peso(v, v2);
+            } else{
+                C[i][j] = 999;
+            }
+            j++;
+            v2 = g.sgtVertice(v2);
+        }
+        v = g.sgtVertice(v);
+        i++;
+    }
+
+    int D[size+1];
+    for(int k = 2; k<size+1;k++){ //Asigna los valores iniciales a D[]
+        D[k] = C[1][k];
+    }
+
+    Relacion1a1<int, int> r11;
+    r11.crear();
+    int columna = 2;
+    while(columna < size+1){ //asiga la P[] inicial
+        int fila = 1;
+        int m = 1;
+        int menor = C[m][columna];
+        while(fila < size+1) {
+            if(menor > C[fila][columna]){
+                menor = C[fila][columna];
+                m = fila;
+            }
+            fila++;
+        }
+        r11.agregarRelacion(columna, m);
+        columna++;
+    }
+
+    int aux = 
+
+
 
 }
 
@@ -80,7 +127,7 @@ bool AlgoritmosGrafoDirigido::iguales(grafo &g1, grafo &g2) {
     return sonIguales;
 }
 
-grafo AlgoritmosGrafoDirigido::copiarGrafo(grafo &g1) {
+grafo AlgoritmosGrafoDirigido::copiarGrafo(grafo g1) {
     grafo g2;
     g2.crear();
     relacion1a1.crear();

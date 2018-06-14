@@ -12,21 +12,21 @@ int main(){
     //cout << "hola putitos" << endl;
     ListaAdyacencia grafo;
     grafo.crear();
-    grafo.agregarVertice("f");
-    grafo.agregarVertice("e");
-    grafo.agregarVertice("d");
-    grafo.agregarVertice("c");
-    grafo.agregarVertice("b");
-    grafo.agregarVertice("a");
-    grafo.agregarArista(grafo.traduceVrt("a"),grafo.traduceVrt("b"), 1);
-    grafo.agregarArista(grafo.traduceVrt("a"),grafo.traduceVrt("e"), 3);
-    grafo.agregarArista(grafo.traduceVrt("a"),grafo.traduceVrt("f"), 2);
-    grafo.agregarArista(grafo.traduceVrt("b"),grafo.traduceVrt("e"), 6);
-    grafo.agregarArista(grafo.traduceVrt("c"),grafo.traduceVrt("d"), 9);
-    grafo.agregarArista(grafo.traduceVrt("d"),grafo.traduceVrt("b"), 8);
-    grafo.agregarArista(grafo.traduceVrt("e"),grafo.traduceVrt("d"), 7);
-    grafo.agregarArista(grafo.traduceVrt("f"),grafo.traduceVrt("b"), 4);
-    grafo.agregarArista(grafo.traduceVrt("f"),grafo.traduceVrt("e"), 5);
+    //grafo.agregarVertice("f");
+    grafo.agregarVertice("5");
+    grafo.agregarVertice("4");
+    grafo.agregarVertice("3");
+    grafo.agregarVertice("2");
+    grafo.agregarVertice("1");
+    grafo.agregarArista(grafo.traduceVrt("1"),grafo.traduceVrt("2"), 10);
+    grafo.agregarArista(grafo.traduceVrt("1"),grafo.traduceVrt("4"), 30);
+    grafo.agregarArista(grafo.traduceVrt("1"),grafo.traduceVrt("5"), 100);
+    grafo.agregarArista(grafo.traduceVrt("2"),grafo.traduceVrt("3"), 50);
+    grafo.agregarArista(grafo.traduceVrt("3"),grafo.traduceVrt("5"), 10);
+    grafo.agregarArista(grafo.traduceVrt("4"),grafo.traduceVrt("3"), 20);
+    grafo.agregarArista(grafo.traduceVrt("4"),grafo.traduceVrt("5"), 60);
+    //grafo.agregarArista(grafo.traduceVrt("f"),grafo.traduceVrt("b"), 4);
+    //grafo.agregarArista(grafo.traduceVrt("f"),grafo.traduceVrt("e"), 5);
 
     ListaAdyacencia g2;
     g2.crear();
@@ -47,20 +47,20 @@ int main(){
     g2.agregarArista(g2.traduceVrt("f"),g2.traduceVrt("e"), 1);
     */
     AlgoritmosGrafoDirigido alg;
-
-    alg.eliminarVertNoAislado(grafo,grafo.traduceVrt("e"));
-
-    vertice v = grafo.primerVertice();
+    alg.dijkstra(grafo, grafo.traduceVrt("5"));
+    /*
+    vertice v = c.primerVertice();
     while(v != NULL){
-        cout << grafo.etiqueta(v) << ":";
-        vertice va = grafo.primerVrtAdy(v);
+        cout << c.etiqueta(v) << ":";
+        vertice va = c.primerVrtAdy(v);
         while(va != NULL){
-            cout << grafo.etiqueta(va) << "->";
-            va = grafo.sgtVrtAdy(v,va);
+            cout << c.etiqueta(va) << "->";
+            va = c.sgtVrtAdy(v,va);
         }
         cout << endl;
-        v = grafo.sgtVertice(v);
+        v = c.sgtVertice(v);
     }
+    */
 
     return 0;
 }
