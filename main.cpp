@@ -47,7 +47,7 @@ int main(){
     g2.agregarArista(g2.traduceVrt("f"),g2.traduceVrt("e"), 1);
     */
     AlgoritmosGrafoDirigido alg;
-    alg.dijkstra(grafo, grafo.traduceVrt("5"));
+    alg.dijkstra(grafo);
     /*
     vertice v = c.primerVertice();
     while(v != NULL){

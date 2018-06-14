@@ -21,7 +21,7 @@ public:
     //EFE:
     //REQ:
     //MOD:
-    void dijkstra(grafo& g, vertice k);
+    void dijkstra(grafo& g);
 
     //EFE:
     //REQ:

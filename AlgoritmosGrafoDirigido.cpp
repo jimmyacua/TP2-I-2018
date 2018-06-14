@@ -31,9 +31,9 @@ void AlgoritmosGrafoDirigido::profPrimeroRec(grafo g, vertice v) {
     }
 }
 
-void AlgoritmosGrafoDirigido::dijkstra(grafo& g, vertice o) {
+void AlgoritmosGrafoDirigido::dijkstra(grafo& g) {
     int size = g.numVertices();
-    int S[size+1];
+    bool S[size+1];
     int C[size+1][size+1];
     vertice v = g.primerVertice();
     int i = 1;
@@ -76,10 +76,30 @@ void AlgoritmosGrafoDirigido::dijkstra(grafo& g, vertice o) {
         columna++;
     }
 
-    int aux = 
+    S[1] = true;
+    for(int k=1; k<size+1;k++) {
+        int aux = 2;
+        int w = D[aux];
+        while (aux < size + 1) {
+            if (w > D[aux] && S[aux] == false) {
+                w = D[aux];
+            } else {
+                aux++;
+            }
+        }
+        S[aux] = true;
+        for(int j= 1; j<size+1;j++){
+            if(S[j] == false){
+                if(D[j] > D[k] + C[k][j]){
+                    D[j] = D[k] + C[k][j];
+                }
+            }
+        }
+    }
 
-
-
+    for(int j = 2; j<size+1;j++){
+        cout << D[j] << endl;
+    }
 }
 
 bool AlgoritmosGrafoDirigido::iguales(grafo &g1, grafo &g2) {
