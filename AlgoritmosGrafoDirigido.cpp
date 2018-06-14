@@ -77,11 +77,11 @@ void AlgoritmosGrafoDirigido::dijkstra(grafo& g) {
     }
 
     S[1] = true;
-    for(int k=1; k<size+1;k++) {
+    for(int k=1; k<size;k++) {
         int aux = 2;
         int w = D[aux];
-        while (aux < size + 1) {
-            if (w > D[aux] && S[aux] == false) {
+        while (aux < size+1) {
+            if (w > D[aux] && !S[aux]) {
                 w = D[aux];
             } else {
                 aux++;
@@ -89,7 +89,7 @@ void AlgoritmosGrafoDirigido::dijkstra(grafo& g) {
         }
         S[aux] = true;
         for(int j= 1; j<size+1;j++){
-            if(S[j] == false){
+            if(!S[j]){
                 if(D[j] > D[k] + C[k][j]){
                     D[j] = D[k] + C[k][j];
                 }
@@ -97,8 +97,13 @@ void AlgoritmosGrafoDirigido::dijkstra(grafo& g) {
         }
     }
 
+    vertice v1 = g.primerVertice();
+    cout << "Vertices       Distancia del origen" << endl;
+    cout << g.etiqueta(v1)<<"                       0" << endl;
+    v1 = g.sgtVertice(v1);
     for(int j = 2; j<size+1;j++){
-        cout << D[j] << endl;
+        cout << g.etiqueta(v1) << "                      "  << D[j] << endl;
+        v1 = g.sgtVertice(v1);
     }
 }
 
