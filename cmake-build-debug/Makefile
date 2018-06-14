@@ -123,6 +123,33 @@ TP2/fast:
 	$(MAKE) -f CMakeFiles/TP2.dir/build.make CMakeFiles/TP2.dir/build
 .PHONY : TP2/fast
 
+AlgoritmosGrafoDirigido.o: AlgoritmosGrafoDirigido.cpp.o
+
+.PHONY : AlgoritmosGrafoDirigido.o
+
+# target to build an object file
+AlgoritmosGrafoDirigido.cpp.o:
+	$(MAKE) -f CMakeFiles/TP2.dir/build.make CMakeFiles/TP2.dir/AlgoritmosGrafoDirigido.cpp.o
+.PHONY : AlgoritmosGrafoDirigido.cpp.o
+
+AlgoritmosGrafoDirigido.i: AlgoritmosGrafoDirigido.cpp.i
+
+.PHONY : AlgoritmosGrafoDirigido.i
+
+# target to preprocess a source file
+AlgoritmosGrafoDirigido.cpp.i:
+	$(MAKE) -f CMakeFiles/TP2.dir/build.make CMakeFiles/TP2.dir/AlgoritmosGrafoDirigido.cpp.i
+.PHONY : AlgoritmosGrafoDirigido.cpp.i
+
+AlgoritmosGrafoDirigido.s: AlgoritmosGrafoDirigido.cpp.s
+
+.PHONY : AlgoritmosGrafoDirigido.s
+
+# target to generate assembly for a file
+AlgoritmosGrafoDirigido.cpp.s:
+	$(MAKE) -f CMakeFiles/TP2.dir/build.make CMakeFiles/TP2.dir/AlgoritmosGrafoDirigido.cpp.s
+.PHONY : AlgoritmosGrafoDirigido.cpp.s
+
 Diccionario.o: Diccionario.cpp.o
 
 .PHONY : Diccionario.o
@@ -267,6 +294,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... TP2"
+	@echo "... AlgoritmosGrafoDirigido.o"
+	@echo "... AlgoritmosGrafoDirigido.i"
+	@echo "... AlgoritmosGrafoDirigido.s"
 	@echo "... Diccionario.o"
 	@echo "... Diccionario.i"
 	@echo "... Diccionario.s"

@@ -12,6 +12,7 @@
 #include <iostream>
 
 using namespace std;
+
 typedef ListaIndexadaLSE listaInd;
 typedef int vertice;
 typedef int arista;
@@ -76,7 +77,7 @@ public:
     //Efecto:
     //Requiere:
     //Modifica:
-    bool hayArista(vertice,vertice);
+    bool existeArista(vertice,vertice);
     //Efecto:
     //Requiere:
     //Modifica:

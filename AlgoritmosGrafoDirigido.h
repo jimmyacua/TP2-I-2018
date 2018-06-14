@@ -8,11 +8,12 @@
 #include <iostream>
 
 #include "GrafoDirigListAdy.h"
+//#include "GrafoMatriz.h"
 #include "Relacion1a1.h"
 #include "Diccionario.h"
 
 using namespace std;
-
+//typedef GrafoMatriz grafo;
 typedef ListaAdyacencia grafo;
 typedef Relacion1a1<vertice, vertice> relacion;
 

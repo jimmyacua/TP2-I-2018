@@ -6,6 +6,20 @@
 
 #IncludeRegexTransform: 
 
+/home/felipe/CLionProjects/TP2-I-2018/AlgoritmosGrafoDirigido.cpp
+AlgoritmosGrafoDirigido.h
+/home/felipe/CLionProjects/TP2-I-2018/AlgoritmosGrafoDirigido.h
+
+/home/felipe/CLionProjects/TP2-I-2018/AlgoritmosGrafoDirigido.h
+iostream
+-
+GrafoDirigListAdy.h
+/home/felipe/CLionProjects/TP2-I-2018/GrafoDirigListAdy.h
+Relacion1a1.h
+/home/felipe/CLionProjects/TP2-I-2018/Relacion1a1.h
+Diccionario.h
+/home/felipe/CLionProjects/TP2-I-2018/Diccionario.h
+
 /home/felipe/CLionProjects/TP2-I-2018/Diccionario.cpp
 Diccionario.h
 /home/felipe/CLionProjects/TP2-I-2018/Diccionario.h
@@ -13,6 +27,16 @@ iostream
 -
 
 /home/felipe/CLionProjects/TP2-I-2018/Diccionario.h
+
+/home/felipe/CLionProjects/TP2-I-2018/GrafoDirigListAdy.cpp
+GrafoDirigListAdy.h
+/home/felipe/CLionProjects/TP2-I-2018/GrafoDirigListAdy.h
+
+/home/felipe/CLionProjects/TP2-I-2018/GrafoDirigListAdy.h
+string
+-
+iostream
+-
 
 /home/felipe/CLionProjects/TP2-I-2018/GrafoMatriz.cpp
 GrafoMatriz.h
@@ -47,6 +71,10 @@ memory
 /home/felipe/CLionProjects/TP2-I-2018/main.cpp
 Relacion1a1.h
 /home/felipe/CLionProjects/TP2-I-2018/Relacion1a1.h
+GrafoDirigListAdy.h
+/home/felipe/CLionProjects/TP2-I-2018/GrafoDirigListAdy.h
+AlgoritmosGrafoDirigido.h
+/home/felipe/CLionProjects/TP2-I-2018/AlgoritmosGrafoDirigido.h
 iostream
 -
 

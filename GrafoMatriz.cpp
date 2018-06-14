@@ -88,7 +88,7 @@ vertice GrafoMatriz::siguieteVertice(vertice indice) {
     return indice+1;
 }
 
-bool GrafoMatriz::hayArista(vertice indiceP, vertice indiceS) {
+bool GrafoMatriz::existeArista(vertice indiceP, vertice indiceS) {
     if(matrizAdyacencia[indiceP][indiceS]>0){
         return true;
     } else{

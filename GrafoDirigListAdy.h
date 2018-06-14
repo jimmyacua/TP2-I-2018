@@ -14,16 +14,18 @@ struct Vertice{
     string etiqueta;
     Vertice *sgt;
     struct Arista *ady;
-
+    int numVrtAdy;
     Vertice(){
         etiqueta = "";
         sgt = NULL;
         ady = NULL;
+        numVrtAdy =0;
     };
 
     Vertice(string e){
         etiqueta = e;
         ady = NULL;
+        numVrtAdy = 0;
     };
 
 };
@@ -135,6 +137,15 @@ public:
     //REQ:
     //MOD:
     int numVertices();
+    //EFE: devuelve el numero de vertices adyacentes a v
+    //REQ: grafo inicializado y v valido
+    //MOD: -
+    int numVrtAdyacentes(vertice v);
+
+    //EFE: devuelve true si existe una arista de v1 a v2, false si no.
+    //REQ: grafo inicializado y v1 y v2 validos
+    //MOD: -
+    bool existeArista(vertice v1, vertice v2);
 
     vertice traduceVrt(string e);
 

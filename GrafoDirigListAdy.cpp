@@ -178,3 +178,20 @@ vertice ListaAdyacencia::traduceVrt(string e) {
     }
     return temp;
 }
+
+int ListaAdyacencia::numVrtAdyacentes(vertice v) {
+    return v->numVrtAdy;
+}
+
+bool ListaAdyacencia::existeArista(vertice v1, vertice v2) {
+    adyacente ad = v1->ady;
+    bool existe = false;
+    while(ad != NULL && !existe){
+        if(ad->destino == v2){
+            existe = true;
+        } else{
+            ad = ad->sgt;
+        }
+    }
+    return existe;
+}
