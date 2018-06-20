@@ -103,6 +103,7 @@ void ListaAdyacencia::agregarArista(vertice v1, vertice v2, int p) {
         aris->destino = v2;
         aux->sgt = aris;
     }
+    v1->numVrtAdy++;
 
 }
 
@@ -120,7 +121,7 @@ void ListaAdyacencia::eliminarArista(vertice v1, vertice v2) {
         anterior->sgt = aux->sgt;
         delete aux;
     }
-
+    v1->numVrtAdy--;
 }
 
 void ListaAdyacencia::modificarPeso(vertice v1, vertice v2, int p) {
@@ -144,11 +145,15 @@ vertice ListaAdyacencia::primerVertice() {
 }
 
 vertice ListaAdyacencia::sgtVertice(vertice v) {
-    return v->sgt;
+    if(v->sgt != NULL) {
+        return v->sgt;
+    } else{
+        return NULL;
+    }
 }
 
 vertice ListaAdyacencia::primerVrtAdy(vertice v) {
-    if(v->ady->destino != NULL){
+    if(v->ady != NULL){
         return v->ady->destino;
     } else{
         return NULL;
@@ -177,4 +182,21 @@ vertice ListaAdyacencia::traduceVrt(string e) {
         temp = temp->sgt;
     }
     return temp;
+}
+
+int ListaAdyacencia::numVrtAdyacentes(vertice v) {
+    return v->numVrtAdy;
+}
+
+bool ListaAdyacencia::existeArista(vertice v1, vertice v2) {
+    adyacente ad = v1->ady;
+    bool existe = false;
+    while(ad != NULL && !existe){
+        if(ad->destino == v2){
+            existe = true;
+        } else{
+            ad = ad->sgt;
+        }
+    }
+    return existe;
 }

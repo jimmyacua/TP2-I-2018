@@ -6,23 +6,35 @@
 #define TP2_I_2018_ALGORITMOSGRAFODIRIGIDO_H
 
 #include <iostream>
+#include <vector>
+#include <queue>
 
 #include "GrafoDirigListAdy.h"
 #include "Relacion1a1.h"
 #include "Diccionario.h"
 
+#define Node pair<vertice, int> //vrt adyacente y peso de arista
+#define MAX = 20;
+
+
 using namespace std;
 
 typedef ListaAdyacencia grafo;
-typedef Relacion1a1<vertice, vertice> relacion;
 
 
 class AlgoritmosGrafoDirigido {
 public:
+
+    struct cmp {
+        bool operator()(const Node &a, const Node &b) {
+            return a.second > b.second;
+        }
+    };
+
     //EFE:
     //REQ:
     //MOD:
-    void dijkstra(grafo& g);
+    void dijkstra(grafo& g, vertice o);
 
     //EFE:
     //REQ:
@@ -32,7 +44,7 @@ public:
     //EFE:
     //REQ:
     //MOD:
-    void profundidadPrimero(grafo& g);
+    void profundidadPrimero(grafo g);
 
     //EFE:
     //REQ:
@@ -42,7 +54,7 @@ public:
     //EFE:
     //REQ:
     //MOD:
-    void copiarGrafo(grafo& g1, grafo g2);
+    grafo copiarGrafo(grafo g1);
 
     //EFE:
     //REQ:
@@ -55,8 +67,15 @@ private:
     //REQ:
     //MOD:
     void profPrimeroRec(grafo, vertice);
-    Diccionario dvv;
 
+    void menor(vertice actual, int pos, vertice ad,int posAd,  int peso);
+
+    int distancia[20];
+    vertice previo[20];
+
+    priority_queue<Node, vector<Node>, cmp> Q;
+    Diccionario dvv;
+    Relacion1a1<vertice,vertice>  relacion1a1;
 };
 
 

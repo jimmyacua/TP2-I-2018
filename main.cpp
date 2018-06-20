@@ -5,34 +5,28 @@
 #include "Relacion1a1.h"
 #include "GrafoDirigListAdy.h"
 #include "AlgoritmosGrafoDirigido.h"
-#include <iostream>
-using namespace std;
 
 int main(){
-    //cout << "hola putitos" << endl;
     ListaAdyacencia grafo;
     grafo.crear();
-    grafo.agregarVertice("f");
-    grafo.agregarVertice("e");
-    grafo.agregarVertice("d");
-    grafo.agregarVertice("c");
-    grafo.agregarVertice("b");
-    grafo.agregarVertice("a");
-    grafo.agregarArista(grafo.traduceVrt("a"),grafo.traduceVrt("b"), 3);
-    grafo.agregarArista(grafo.traduceVrt("a"),grafo.traduceVrt("e"), 5);
-    grafo.agregarArista(grafo.traduceVrt("a"),grafo.traduceVrt("f"), 6);
-    grafo.agregarArista(grafo.traduceVrt("b"),grafo.traduceVrt("e"), 2);
-    grafo.agregarArista(grafo.traduceVrt("c"),grafo.traduceVrt("d"), 1);
-    grafo.agregarArista(grafo.traduceVrt("d"),grafo.traduceVrt("b"), 1);
-    grafo.agregarArista(grafo.traduceVrt("e"),grafo.traduceVrt("d"), 1);
-    grafo.agregarArista(grafo.traduceVrt("f"),grafo.traduceVrt("b"), 1);
-    grafo.agregarArista(grafo.traduceVrt("f"),grafo.traduceVrt("e"), 1);
+    grafo.agregarVertice("5");
+    grafo.agregarVertice("4");
+    grafo.agregarVertice("3");
+    grafo.agregarVertice("2");
+    grafo.agregarVertice("1");
+    grafo.agregarArista(grafo.traduceVrt("1"),grafo.traduceVrt("2"), 10);
+    grafo.agregarArista(grafo.traduceVrt("1"),grafo.traduceVrt("4"), 30);
+    grafo.agregarArista(grafo.traduceVrt("1"),grafo.traduceVrt("5"), 100);
+    grafo.agregarArista(grafo.traduceVrt("2"),grafo.traduceVrt("3"), 50);
+    grafo.agregarArista(grafo.traduceVrt("3"),grafo.traduceVrt("5"), 10);
+    grafo.agregarArista(grafo.traduceVrt("4"),grafo.traduceVrt("3"), 20);
+    grafo.agregarArista(grafo.traduceVrt("4"),grafo.traduceVrt("5"), 60);
 
-    AlgoritmosGrafoDirigido alg;
-    //alg.profundidadPrimero(grafo);
 
 
 
+    AlgoritmosGrafoDirigido alg;
+    alg.dijkstra(grafo, grafo.primerVertice());
 
     return 0;
 }
