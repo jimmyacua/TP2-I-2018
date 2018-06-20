@@ -112,7 +112,7 @@ void AlgoritmosGrafoDirigido::dijkstra(grafo& g, vertice o) {
 }
 
 void AlgoritmosGrafoDirigido::menor(vertice actual, int pos, vertice ad, int posAd ,int peso) {
-    if(peso < distancia[posAd]){
+    if(distancia[pos]+peso < distancia[posAd]){
         distancia[posAd] = peso;
         previo[posAd] = actual;
         Q.push(Node(ad,distancia[posAd]));
