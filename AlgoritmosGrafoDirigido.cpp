@@ -4,6 +4,7 @@
 
 #include "AlgoritmosGrafoDirigido.h"
 
+
 void AlgoritmosGrafoDirigido::profundidadPrimero(grafo g) {
     if(!g.vacio()){
         dvv.crear();
@@ -31,79 +32,90 @@ void AlgoritmosGrafoDirigido::profPrimeroRec(grafo g, vertice v) {
     }
 }
 
-void AlgoritmosGrafoDirigido::dijkstra(grafo& g) {
+void AlgoritmosGrafoDirigido::dijkstra(grafo& g, vertice o) {
     int size = g.numVertices();
-    bool S[size+1];
-    int C[size+1][size+1];
+    Relacion1a1<vertice, int> par;
+    int INF = 99999;
+    //int distancia[size];
+    bool visitado[size];
+    //vertice previo[size];
+    vertice listVrt[size];
     vertice v = g.primerVertice();
-    int i = 1;
-    while(i < size+1){
-        int j = 1;
-        vertice v2 = g.primerVertice();
-        while(j < size+1){
-            if(g.existeArista(v,v2)) {
-                C[i][j] = g.peso(v, v2);
-            } else{
-                C[i][j] = 999;
-            }
-            j++;
-            v2 = g.sgtVertice(v2);
+
+    listVrt[0] = o;
+    int cont = 1;
+    vertice v1 = g.primerVertice();
+    while(v1 != NULL){
+        if(v1 != o){
+            listVrt[cont] = v1;
+            cont++;
         }
-        v = g.sgtVertice(v);
-        i++;
+        v1 = g.sgtVertice(v1);
     }
 
-    int D[size+1];
-    for(int k = 2; k<size+1;k++){ //Asigna los valores iniciales a D[]
-        D[k] = C[1][k];
+    for (int i = 0; i < size; i++) { //para inicializar los arreglos
+        distancia[i] = INF;
+        visitado[i] = false;
+        previo[i] = NULL;
+    } //fin de inicializacion
+
+    Q.push(Node(o, 0));
+    distancia[0] = 0;
+    vertice actual;
+    int peso;
+    while (!Q.empty()) {
+        actual = Q.top().first;
+        Q.pop();
+        int pos = 0;
+        while (listVrt[pos] != actual) {
+            pos++;
+        }
+        if (!visitado[pos]){
+            visitado[pos] = true;
+            vertice v = g.primerVrtAdy(actual);
+            while (v != NULL) {
+                peso = g.peso(actual,v);
+                int posV = 0;
+                vertice aux = g.primerVertice();
+                while (aux != v) {
+                    posV++;
+                    aux = g.sgtVertice(aux);
+                }
+                if (!visitado[posV]) {
+                    menor(actual, pos, v, posV, peso);
+                }
+                v = g.sgtVrtAdy(actual,v);
+            }
+        }
     }
 
-    Relacion1a1<int, int> r11;
-    r11.crear();
-    int columna = 2;
-    while(columna < size+1){ //asiga la P[] inicial
-        int fila = 1;
-        int m = 1;
-        int menor = C[m][columna];
-        while(fila < size+1) {
-            if(menor > C[fila][columna]){
-                menor = C[fila][columna];
-                m = fila;
-            }
-            fila++;
-        }
-        r11.agregarRelacion(columna, m);
-        columna++;
-    }
-
-    S[1] = true;
-    for(int k=1; k<size;k++) {
-        int aux = 2;
-        int w = D[aux];
-        while (aux < size+1) {
-            if (w > D[aux] && !S[aux]) {
-                w = D[aux];
-            } else {
-                aux++;
-            }
-        }
-        S[aux] = true;
-        for(int j= 1; j<size+1;j++){
-            if(!S[j]){
-                if(D[j] > D[k] + C[k][j]){
-                    D[j] = D[k] + C[k][j];
+    cout << "Distancia desde origen (" << g.etiqueta(o) << ") a todos los vértices." << endl;
+    for(int i = 1; i< size; i++) {
+        string camino = "";
+        int cont = i;
+        while (previo[cont] != o) {
+            camino = camino + g.etiqueta(previo[cont]) + "<-";
+            int a = 1;
+            vertice aux = previo[cont];
+            while(a < size && aux != listVrt[a]){
+                if(listVrt[a] != previo[cont]){
+                    a++;
+                } else{
+                    a = size;
                 }
             }
+            cont = a;
         }
+            cout << "Etiqueta: " << listVrt[i]->etiqueta << ". Distancia: " << distancia[i] << ". Camino: "
+                 << g.etiqueta(listVrt[i]) << "<-" << camino << g.etiqueta(o) << endl;
     }
+}
 
-    vertice v1 = g.primerVertice();
-    cout << "Vertices       Distancia del origen" << endl;
-    cout << g.etiqueta(v1)<<"                       0" << endl;
-    v1 = g.sgtVertice(v1);
-    for(int j = 2; j<size+1;j++){
-        cout << g.etiqueta(v1) << "                      "  << D[j] << endl;
-        v1 = g.sgtVertice(v1);
+void AlgoritmosGrafoDirigido::menor(vertice actual, int pos, vertice ad, int posAd ,int peso) {
+    if(peso < distancia[posAd]){
+        distancia[posAd] = peso;
+        previo[posAd] = actual;
+        Q.push(Node(ad,distancia[posAd]));
     }
 }
 

@@ -145,7 +145,7 @@ vertice ListaAdyacencia::primerVertice() {
 }
 
 vertice ListaAdyacencia::sgtVertice(vertice v) {
-    if(v->sgt->etiqueta != "") {
+    if(v->sgt != NULL) {
         return v->sgt;
     } else{
         return NULL;
