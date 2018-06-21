@@ -13,10 +13,8 @@ AlgoritmosGrafoDirigido.h
 /home/felipe/CLionProjects/TP2-I-2018/AlgoritmosGrafoDirigido.h
 iostream
 -
-GrafoDirigListAdy.h
-/home/felipe/CLionProjects/TP2-I-2018/GrafoDirigListAdy.h
-Relacion1a1.h
-/home/felipe/CLionProjects/TP2-I-2018/Relacion1a1.h
+GrafoMatriz.h
+/home/felipe/CLionProjects/TP2-I-2018/GrafoMatriz.h
 Diccionario.h
 /home/felipe/CLionProjects/TP2-I-2018/Diccionario.h
 
@@ -71,8 +69,6 @@ memory
 /home/felipe/CLionProjects/TP2-I-2018/main.cpp
 Relacion1a1.h
 /home/felipe/CLionProjects/TP2-I-2018/Relacion1a1.h
-GrafoDirigListAdy.h
-/home/felipe/CLionProjects/TP2-I-2018/GrafoDirigListAdy.h
 AlgoritmosGrafoDirigido.h
 /home/felipe/CLionProjects/TP2-I-2018/AlgoritmosGrafoDirigido.h
 iostream

@@ -4,7 +4,7 @@
 
 #include "GrafoMatriz.h"
 
-void GrafoMatriz::iniciar() {
+void GrafoMatriz::crear() {
     cantVertices = 0;
     cantAristas = 0;
     ultimoLleno = 0;
@@ -14,7 +14,7 @@ void GrafoMatriz::iniciar() {
 
 void GrafoMatriz::destruir() {
     lista.destruir();
-    ultimoLleno = -1;
+    ultimoLleno = 0;
     cantVertices = 0;
     cantAristas = 0;
 }
@@ -38,8 +38,8 @@ vertice GrafoMatriz::agregarVertice(string etiqueta) {
         lista.insertar(etiqueta,ultimoLleno+1);
         cantVertices++;
         ultimoLleno++;
-        for(int i = 1; i = ultimoLleno; i++){
-            matrizAdyacencia[ultimoLleno][1]=0;
+        for(int i = 0; i < tam; i++){
+            matrizAdyacencia[ultimoLleno-1][i]=0;
         }
 }
 
@@ -63,40 +63,41 @@ string GrafoMatriz::etiqueta(vertice indice) {
 }
 
 void GrafoMatriz::agregarArista(vertice indiceP, vertice indiceS, int peso) {
-        matrizAdyacencia[indiceP][indiceS] = peso;
+        matrizAdyacencia[indiceP-1][indiceS-1] = peso;
         cantAristas++;
 }
 
 void GrafoMatriz::eliminarArista(vertice indiceP, vertice indiceS) {
-    matrizAdyacencia[indiceP][indiceS]=0;
+    matrizAdyacencia[indiceP-1][indiceS-1]=0;
     cantAristas--;
 }
 
 void GrafoMatriz::modificarPeso(vertice indiceP, vertice indiceS, int peso) {
-    matrizAdyacencia[indiceP][indiceS] = peso;
+    matrizAdyacencia[indiceP-1][indiceS-1] = peso;
 }
 
 int GrafoMatriz::peso(vertice indiceP, vertice indiceS) {
-    return matrizAdyacencia[indiceP][indiceS];
+    int p = matrizAdyacencia[indiceP-1][indiceS-1];
+    return matrizAdyacencia[indiceP-1][indiceS-1];
 }
 
 vertice GrafoMatriz::primerVertice() {
     return 1;
 }
 
-vertice GrafoMatriz::siguieteVertice(vertice indice) {
+vertice GrafoMatriz::sgtVertice(vertice indice) {
     return indice+1;
 }
 
 bool GrafoMatriz::existeArista(vertice indiceP, vertice indiceS) {
-    if(matrizAdyacencia[indiceP][indiceS]>0){
+    if(matrizAdyacencia[indiceP-1][indiceS-1]>0){
         return true;
     } else{
         return false;
     }
 }
 
-vertice GrafoMatriz::primerVerticeAdyacente(vertice indice) {
+vertice GrafoMatriz::primerVrtAdy(vertice indice) {
     bool terminado = false;
     int contador = 1;
     vertice primerAdy;
@@ -110,7 +111,7 @@ vertice GrafoMatriz::primerVerticeAdyacente(vertice indice) {
     return primerAdy;
 }
 
-vertice GrafoMatriz::siguienteVerticeAdyacente(vertice indiceP, vertice indiceS) {
+vertice GrafoMatriz::sgtVrtAdy(vertice indiceP, vertice indiceS) {
     bool terminado = false;
     int contador = indiceS+1;
     vertice siguienteAdy;
@@ -134,4 +135,18 @@ int GrafoMatriz::numAristas() {
 
 void GrafoMatriz::mostrar() {
     lista.listar();
+}
+
+vertice GrafoMatriz::traduceVrt(string e){
+    vertice indice = primerVertice();
+    vertice resultado;
+    bool encontrado = false;
+    while(indice <= ultimoLleno && !encontrado){
+        if(etiqueta(indice)==e){
+            encontrado = true;
+            resultado = indice;
+        }
+        indice++;
+    }
+    return resultado;
 }

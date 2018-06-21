@@ -4,8 +4,8 @@
 CMakeFiles/TP2.dir/AlgoritmosGrafoDirigido.cpp.o: ../AlgoritmosGrafoDirigido.cpp
 CMakeFiles/TP2.dir/AlgoritmosGrafoDirigido.cpp.o: ../AlgoritmosGrafoDirigido.h
 CMakeFiles/TP2.dir/AlgoritmosGrafoDirigido.cpp.o: ../Diccionario.h
-CMakeFiles/TP2.dir/AlgoritmosGrafoDirigido.cpp.o: ../GrafoDirigListAdy.h
-CMakeFiles/TP2.dir/AlgoritmosGrafoDirigido.cpp.o: ../Relacion1a1.h
+CMakeFiles/TP2.dir/AlgoritmosGrafoDirigido.cpp.o: ../GrafoMatriz.h
+CMakeFiles/TP2.dir/AlgoritmosGrafoDirigido.cpp.o: ../ListaIndexadaLSE.h
 
 CMakeFiles/TP2.dir/Diccionario.cpp.o: ../Diccionario.cpp
 CMakeFiles/TP2.dir/Diccionario.cpp.o: ../Diccionario.h
@@ -22,7 +22,8 @@ CMakeFiles/TP2.dir/ListaIndexadaLSE.cpp.o: ../ListaIndexadaLSE.h
 
 CMakeFiles/TP2.dir/main.cpp.o: ../AlgoritmosGrafoDirigido.h
 CMakeFiles/TP2.dir/main.cpp.o: ../Diccionario.h
-CMakeFiles/TP2.dir/main.cpp.o: ../GrafoDirigListAdy.h
+CMakeFiles/TP2.dir/main.cpp.o: ../GrafoMatriz.h
+CMakeFiles/TP2.dir/main.cpp.o: ../ListaIndexadaLSE.h
 CMakeFiles/TP2.dir/main.cpp.o: ../Relacion1a1.h
 CMakeFiles/TP2.dir/main.cpp.o: ../main.cpp
 
