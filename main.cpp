@@ -5,27 +5,20 @@
 #include "Relacion1a1.h"
 #include "GrafoDirigListAdy.h"
 #include "AlgoritmosGrafoDirigido.h"
+#include "GrafoNODirigido.h"
 
 int main(){
-    ListaAdyacencia grafo;
-    grafo.crear();
-    grafo.agregarVertice("5");
-    grafo.agregarVertice("4");
-    grafo.agregarVertice("3");
-    grafo.agregarVertice("2");
-    grafo.agregarVertice("1");
-    grafo.agregarArista(grafo.traduceVrt("1"),grafo.traduceVrt("2"), 10);
-    grafo.agregarArista(grafo.traduceVrt("1"),grafo.traduceVrt("4"), 30);
-    grafo.agregarArista(grafo.traduceVrt("1"),grafo.traduceVrt("5"), 100);
-    grafo.agregarArista(grafo.traduceVrt("2"),grafo.traduceVrt("3"), 50);
-    grafo.agregarArista(grafo.traduceVrt("3"),grafo.traduceVrt("5"), 10);
-    grafo.agregarArista(grafo.traduceVrt("4"),grafo.traduceVrt("3"), 20);
-    grafo.agregarArista(grafo.traduceVrt("4"),grafo.traduceVrt("5"), 60);
 
+    GrafoNODirigido g;
+    g.crear();
+    g.agregarVertice("a");
+    g.agregarVertice("b");
+    g.agregarArista(g.traduceVrt("a"),g.traduceVrt("b"), 9);
+    bool r = g.existeArista(g.traduceVrt("a"),g.traduceVrt("b"));
+    cout << r << endl;
+    r = g.traduceVrt("b"),g.traduceVrt("a");
+    cout << r;
 
-
-    AlgoritmosGrafoDirigido alg;
-    alg.dijkstra(grafo, grafo.primerVertice());
 
     return 0;
 }

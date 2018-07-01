@@ -62,6 +62,7 @@ vertice ListaAdyacencia::agregarVertice(string e) {
         cabeza = nuevo;
     }
     nVertices++;
+    return nuevo;
 }
 
 void ListaAdyacencia::eliminarVertice(vertice v) {
