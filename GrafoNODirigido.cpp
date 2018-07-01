@@ -32,7 +32,7 @@ void GrafoNODirigido::eliminarVertice(vert v) {
 
 void GrafoNODirigido::agregarArista(vert v1, vert v2, int p) {
     g.agregarArista(v1,v2,p);
-    g.agregarArista(v2,v1,p);
+    g.agregarArista(v2,v1,p);//la arista en dirección contraria
 }
 
 void GrafoNODirigido::eliminarArista(vert v1, vert v2) {
