@@ -87,3 +87,11 @@ Icon
 ._*
 .Spotlight-V100
 .Trashes
+.idea/workspace.xml
+cmake-build-debug/CMakeCache.txt
+cmake-build-debug/CMakeFiles/Makefile.cmake
+cmake-build-debug/CMakeFiles/Makefile2
+cmake-build-debug/CMakeFiles/clion-log.txt
+cmake-build-debug/CMakeFiles/progress.marks
+cmake-build-debug/Makefile
+
