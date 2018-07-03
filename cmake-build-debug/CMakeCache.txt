@@ -200,12 +200,6 @@ TP2-I-2018_BINARY_DIR:STATIC=/home/felipe/CLionProjects/TP2-I-2018/cmake-build-d
 //Value Computed by CMake
 TP2-I-2018_SOURCE_DIR:STATIC=/home/felipe/CLionProjects/TP2-I-2018
 
-//Value Computed by CMake
-TP2_BINARY_DIR:STATIC=/home/felipe/CLionProjects/TP2-I-2018/cmake-build-debug
-
-//Value Computed by CMake
-TP2_SOURCE_DIR:STATIC=/home/felipe/CLionProjects/TP2-I-2018
-
 
 ########################
 # INTERNAL cache entries

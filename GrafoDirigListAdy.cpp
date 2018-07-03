@@ -62,6 +62,7 @@ vertice ListaAdyacencia::agregarVertice(string e) {
         cabeza = nuevo;
     }
     nVertices++;
+    return nuevo;
 }
 
 void ListaAdyacencia::eliminarVertice(vertice v) {
@@ -103,6 +104,7 @@ void ListaAdyacencia::agregarArista(vertice v1, vertice v2, int p) {
         aris->destino = v2;
         aux->sgt = aris;
     }
+    v1->numVrtAdy++;
 
 }
 
@@ -120,7 +122,7 @@ void ListaAdyacencia::eliminarArista(vertice v1, vertice v2) {
         anterior->sgt = aux->sgt;
         delete aux;
     }
-
+    v1->numVrtAdy--;
 }
 
 void ListaAdyacencia::modificarPeso(vertice v1, vertice v2, int p) {
@@ -144,11 +146,15 @@ vertice ListaAdyacencia::primerVertice() {
 }
 
 vertice ListaAdyacencia::sgtVertice(vertice v) {
-    return v->sgt;
+    if(v->sgt != NULL) {
+        return v->sgt;
+    } else{
+        return NULL;
+    }
 }
 
 vertice ListaAdyacencia::primerVrtAdy(vertice v) {
-    if(v->ady->destino != NULL){
+    if(v->ady != NULL){
         return v->ady->destino;
     } else{
         return NULL;
