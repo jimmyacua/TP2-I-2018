@@ -2,10 +2,10 @@
 // Created by jimmy on 12/06/18.
 //
 
-#include "AlgoritmosGrafoDirigido.h"
+#include "Algoritmos.h"
 
 
-void AlgoritmosGrafoDirigido::profundidadPrimero(grafo g) {
+void Algoritmos::profundidadPrimero(grafo g) {
     if(!g.vacio()){
         dvv.crear();
         vertice v = g.primerVertice();
@@ -20,7 +20,7 @@ void AlgoritmosGrafoDirigido::profundidadPrimero(grafo g) {
     }
 }
 
-void AlgoritmosGrafoDirigido::profPrimeroRec(grafo g, vertice v) {
+void Algoritmos::profPrimeroRec(grafo g, vertice v) {
     dvv.agregar(v);
     cout << g.etiqueta(v) << " -> ";
     vertice va = g.primerVrtAdy(v);
@@ -32,7 +32,7 @@ void AlgoritmosGrafoDirigido::profPrimeroRec(grafo g, vertice v) {
     }
 }
 
-void AlgoritmosGrafoDirigido::dijkstra(grafo& g, vertice o) {
+void Algoritmos::dijkstra(grafo& g, vertice o) {
     int size = g.numVertices();
     Relacion1a1<vertice, int> par;
     int INF = 99999;
@@ -111,7 +111,7 @@ void AlgoritmosGrafoDirigido::dijkstra(grafo& g, vertice o) {
     }
 }
 
-void AlgoritmosGrafoDirigido::menor(vertice actual, int pos, vertice ad, int posAd ,int peso) {
+void Algoritmos::menor(vertice actual, int pos, vertice ad, int posAd ,int peso) {
     if(distancia[pos]+peso < distancia[posAd]){
         distancia[posAd] = peso;
         previo[posAd] = actual;
@@ -119,7 +119,7 @@ void AlgoritmosGrafoDirigido::menor(vertice actual, int pos, vertice ad, int pos
     }
 }
 
-bool AlgoritmosGrafoDirigido::iguales(grafo &g1, grafo &g2) {
+bool Algoritmos::iguales(grafo &g1, grafo &g2) {
     bool sonIguales = true;
     if(g1.numVertices() != g2.numVertices()){
         sonIguales = false;
@@ -164,7 +164,7 @@ bool AlgoritmosGrafoDirigido::iguales(grafo &g1, grafo &g2) {
     return sonIguales;
 }
 
-grafo AlgoritmosGrafoDirigido::copiarGrafo(grafo g1) {
+grafo Algoritmos::copiarGrafo(grafo g1) {
     grafo g2;
     g2.crear();
     relacion1a1.crear();
@@ -192,7 +192,7 @@ grafo AlgoritmosGrafoDirigido::copiarGrafo(grafo g1) {
     return g2;
 }
 
-void AlgoritmosGrafoDirigido::eliminarVertNoAislado(grafo& g, vertice v) {
+void Algoritmos::eliminarVertNoAislado(grafo& g, vertice v) {
     vertice aux = g.primerVertice();
     while(aux != NULL){
         if(aux != v){
@@ -208,4 +208,68 @@ void AlgoritmosGrafoDirigido::eliminarVertNoAislado(grafo& g, vertice v) {
         ad = ad->sgt;
     }
     g.eliminarVertice(v);
+}
+
+void Algoritmos::hamilton(gnd &g) {
+    int n = g.numVertices();
+    vertice* ruta = new vertice[n];
+    dvv.crear();
+    numSolFact = 0;
+    solOPtima = 9999; //simula INF
+    dvv.agregar(g.primerVertice());
+    vertice* rutaAct = hamiltonRec(g,g.primerVertice(), 0, ruta);
+    delete[] ruta;
+    if(rutaAct != 0){
+        cout << g.etiqueta(g.primerVertice()) << "->";
+        for (int i = 0; i < n - 1; i++) {
+            cout << g.etiqueta(rutaAct[i]) << "->";
+        }
+        cout << g.etiqueta(g.primerVertice()) << endl;
+        cout << "Peso Total: " << solOPtima << endl;
+        cout << "Numero de soluciones factibles: " << numSolFact << endl;
+    } else {
+        cout << "No hay soluciones" << endl;
+    }
+    dvv.destruir();
+}
+
+vertice* Algoritmos::hamiltonRec(gnd &g, vertice v, int peso, vertice* array) {
+    vertice* sol = 0;
+    if(dvv.numElem() == g.numVertices()){
+        if(!g.existeArista(v,g.primerVertice())){
+            return 0;
+        }
+        peso += g.peso(v,g.primerVertice());
+        numSolFact++;
+        if(peso < solOPtima){
+            int n = g.numVertices();
+            sol = new vertice[n];
+            solOPtima = peso;
+            for(int i = 0; i < n-1; i++){
+                sol[i] = array[i];
+            }
+            sol[n-1] = g.primerVertice();
+        }
+        return sol;
+    }
+
+    vertice ady = g.primerVrtAdy(v);
+    while(ady != NULL){
+        if(!dvv.pertenece(ady)){
+            dvv.agregar(ady);
+            peso += g.peso(v,ady);
+            array[dvv.numElem()-2] = ady;
+            vertice* solP = hamiltonRec(g,ady,peso,array);
+            if(solP != 0){
+                if(sol != 0){
+                    delete[] sol;
+                }
+                sol = solP;
+            }
+            dvv.borrar(ady);
+            peso -= g.peso(v,ady);
+        }
+        ady = g.sgtVrtAdy(v,ady);
+    }
+    return sol;
 }

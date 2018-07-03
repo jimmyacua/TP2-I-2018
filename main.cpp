@@ -4,29 +4,32 @@
 
 #include "Relacion1a1.h"
 #include "GrafoDirigListAdy.h"
-#include "AlgoritmosGrafoDirigido.h"
+#include "Algoritmos.h"
+#include "GrafoNODirigido.h"
 
 int main(){
-    ListaAdyacencia grafo;
-    grafo.crear();
-    grafo.agregarVertice("5");
-    grafo.agregarVertice("4");
-    grafo.agregarVertice("3");
-    grafo.agregarVertice("2");
-    grafo.agregarVertice("1");
-    grafo.agregarArista(grafo.traduceVrt("1"),grafo.traduceVrt("2"), 10);
-    grafo.agregarArista(grafo.traduceVrt("1"),grafo.traduceVrt("4"), 30);
-    grafo.agregarArista(grafo.traduceVrt("1"),grafo.traduceVrt("5"), 100);
-    grafo.agregarArista(grafo.traduceVrt("2"),grafo.traduceVrt("3"), 50);
-    grafo.agregarArista(grafo.traduceVrt("3"),grafo.traduceVrt("5"), 10);
-    grafo.agregarArista(grafo.traduceVrt("4"),grafo.traduceVrt("3"), 20);
-    grafo.agregarArista(grafo.traduceVrt("4"),grafo.traduceVrt("5"), 60);
 
+    GrafoNODirigido g;
+    g.crear();
+    g.agregarVertice("e");
+    g.agregarVertice("d");
+    g.agregarVertice("c");
+    g.agregarVertice("b");
+    g.agregarVertice("a");
+    g.agregarArista(g.traduceVrt("a"),g.traduceVrt("b"), 3);
+    g.agregarArista(g.traduceVrt("a"),g.traduceVrt("c"), 4);
+    g.agregarArista(g.traduceVrt("a"),g.traduceVrt("d"), 2);
+    g.agregarArista(g.traduceVrt("a"),g.traduceVrt("e"), 7);
+    g.agregarArista(g.traduceVrt("b"),g.traduceVrt("c"), 4);
+    g.agregarArista(g.traduceVrt("b"),g.traduceVrt("d"), 6);
+    g.agregarArista(g.traduceVrt("b"),g.traduceVrt("e"), 3);
+    g.agregarArista(g.traduceVrt("c"),g.traduceVrt("d"), 5);
+    g.agregarArista(g.traduceVrt("c"),g.traduceVrt("e"), 8);
+    g.agregarArista(g.traduceVrt("d"),g.traduceVrt("e"), 6);
+    //grafo visto en clase
 
-
-
-    AlgoritmosGrafoDirigido alg;
-    alg.dijkstra(grafo, grafo.primerVertice());
+    Algoritmos algoritmos;
+    algoritmos.hamilton(g);
 
     return 0;
 }
