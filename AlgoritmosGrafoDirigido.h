@@ -50,6 +50,12 @@ public:
     //MOD:
     bool iguales(grafo& g1, grafo& g2);
 
+    int menorArista(int aristas[],bool visitados[],int tam);
+
+    //EFE:
+    //REQ:
+    //MOD:
+    void prim(grafo& g);
 private:
 
     //EFE:

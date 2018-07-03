@@ -76,3 +76,40 @@ void AlgoritmosGrafoDirigido::floyd(grafo& g) {
         printf("\n");
     }
 }
+
+int AlgoritmosGrafoDirigido::menorArista(int aristas[], bool visitados[], int tam) {
+    int min = 1000;
+    int minInd;
+    for(int i=0; i<tam; i++){
+        if(visitados[i]==false&&aristas[i]<min){
+            min = aristas[i];
+            minInd = i;
+        }
+    }
+    return minInd;
+}
+
+void AlgoritmosGrafoDirigido::prim(grafo &g) {
+    int tam = g.numVertices();
+    int aristasPesos[tam];
+    bool visitados[tam];
+    vertice camino[tam];
+    //Rellena los pesos y los visitados
+    for(int i=0;i<tam;i++){
+        aristasPesos[i]=1000;//Se pone 1000 en lugar del INF
+        visitados[i] = false;
+    }
+    aristasPesos[0] = 0;
+    camino[0] = NULL;
+    for(int j=0; j < tam-1; j++){
+        int minimo = menorArista(aristasPesos,visitados,tam);
+        visitados[minimo] = true;
+        for(int i=0;i<tam;i++){
+            if((g.existeArista(minimo,i))&&(visitados[i]==false)&&(g.peso(minimo,i))){
+                camino[i] = minimo;
+                aristasPesos[i] = g.peso(minimo,i);
+            }
+        }
+    }
+    //imprimir
+}
