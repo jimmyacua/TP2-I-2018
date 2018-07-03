@@ -6,12 +6,12 @@
 #define TP2_I_2018_GRAFONODIRIGIDO_H
 
 #include "GrafoDirigListAdy.h"
-#include "AlgoritmosGrafoDirigido.h"
+//#include "GrafoMatriz.h"
 
 typedef ListaAdyacencia grafo;
 typedef vertice vert;
 
-//typedef Matriz grafo;
+//typedef GrafoMatriz grafo;
 // vertice int
 
 

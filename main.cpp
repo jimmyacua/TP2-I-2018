@@ -4,21 +4,32 @@
 
 #include "Relacion1a1.h"
 #include "GrafoDirigListAdy.h"
-#include "AlgoritmosGrafoDirigido.h"
+#include "Algoritmos.h"
 #include "GrafoNODirigido.h"
 
 int main(){
 
     GrafoNODirigido g;
     g.crear();
-    g.agregarVertice("a");
+    g.agregarVertice("e");
+    g.agregarVertice("d");
+    g.agregarVertice("c");
     g.agregarVertice("b");
-    g.agregarArista(g.traduceVrt("a"),g.traduceVrt("b"), 9);
-    bool r = g.existeArista(g.traduceVrt("a"),g.traduceVrt("b"));
-    cout << r << endl;
-    r = g.traduceVrt("b"),g.traduceVrt("a");
-    cout << r;
+    g.agregarVertice("a");
+    g.agregarArista(g.traduceVrt("a"),g.traduceVrt("b"), 3);
+    g.agregarArista(g.traduceVrt("a"),g.traduceVrt("c"), 4);
+    g.agregarArista(g.traduceVrt("a"),g.traduceVrt("d"), 2);
+    g.agregarArista(g.traduceVrt("a"),g.traduceVrt("e"), 7);
+    g.agregarArista(g.traduceVrt("b"),g.traduceVrt("c"), 4);
+    g.agregarArista(g.traduceVrt("b"),g.traduceVrt("d"), 6);
+    g.agregarArista(g.traduceVrt("b"),g.traduceVrt("e"), 3);
+    g.agregarArista(g.traduceVrt("c"),g.traduceVrt("d"), 5);
+    g.agregarArista(g.traduceVrt("c"),g.traduceVrt("e"), 8);
+    g.agregarArista(g.traduceVrt("d"),g.traduceVrt("e"), 6);
+    //grafo visto en clase
 
+    Algoritmos algoritmos;
+    algoritmos.hamilton(g);
 
     return 0;
 }

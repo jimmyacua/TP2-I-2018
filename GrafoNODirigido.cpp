@@ -73,9 +73,17 @@ vert GrafoNODirigido::primerVrtAdy(vert v) {
 }
 
 vert GrafoNODirigido::sgtVrtAdy(vert v, vert ad) {
-    return g.sgtVrtAdy(v,ad);
+    return g.sgtVrtAdy(v, ad);
 }
 
 vert GrafoNODirigido::traduceVrt(string e) {
     return g.traduceVrt(e);
+}
+
+int GrafoNODirigido::numVertices() {
+    return nVertices;
+}
+
+int GrafoNODirigido::numVrtAdyacentes(vert v) {
+    return v->numVrtAdy;
 }
