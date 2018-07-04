@@ -9,7 +9,8 @@
 
 int main(){
 
-    GrafoNODirigido g;
+    //GrafoNODirigido g;
+    ListaAdyacencia g;
     g.crear();
     g.agregarVertice("e");
     g.agregarVertice("d");
@@ -29,7 +30,10 @@ int main(){
 
 
     Algoritmos algoritmos;
-    algoritmos.hamilton(g);
+    //algoritmos.hamilton(g);
+    grafo g2 = algoritmos.copiarGrafo(g);
+    bool igual = algoritmos.iguales(g,g2);
+    cout << igual;
 
     /*vertice v = g.primerVertice();
     while(v != NULL){
@@ -41,8 +45,6 @@ int main(){
         }
         v = g.sgtVertice(v);
         cout << endl;
-    }
-*/
-
+    }*/
     return 0;
 }

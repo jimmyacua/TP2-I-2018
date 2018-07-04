@@ -57,7 +57,7 @@ public:
     //EFE:
     //REQ:
     //MOD:
-    grafo copiarGrafo(grafo g1);
+    grafo copiarGrafo(grafo& g1);
 
     //EFE:
     //REQ:
