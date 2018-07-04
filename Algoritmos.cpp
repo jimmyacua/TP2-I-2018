@@ -340,7 +340,7 @@ int Algoritmos::menorArista(int aristas[], bool visitados[], int tam) {
     return minInd;
 }
 
-void Algoritmos::prim(grafo &g) {
+void Algoritmos::prim(gnd &g) {
     int tamano = g.numVertices();
     int pesos[tamano][tamano];
     vertice vertices[tamano];
@@ -393,7 +393,8 @@ void Algoritmos::prim(grafo &g) {
 
     printf("Edge   Weight\n");
     for (int i = 1; i < tamano; i++) {
-        printf("%d - %d    %d \n", camino[i]->etiqueta, i, pesos[i][caminoInd[i]]);
+        cout<<camino[i]->etiqueta<<"   -" <<i<<"  "<<pesos[i][caminoInd[i]]<<endl;
+        //printf("%s - %d    %d \n", camino[i]->etiqueta, i, pesos[i][caminoInd[i]]);
     }
 
 }

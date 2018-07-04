@@ -74,7 +74,7 @@ public:
     //EFE:
     //REQ:
     //MOD:
-    void prim(grafo& g);
+    void prim(gnd& g);
 
 private:
 
