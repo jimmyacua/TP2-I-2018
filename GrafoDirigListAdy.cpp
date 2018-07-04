@@ -5,7 +5,7 @@
 #include "GrafoDirigListAdy.h"
 
 void ListaAdyacencia::crear() {
-    cabeza = new Vertice();
+    cabeza = NULL;
     nVertices = 0;
 }
 
@@ -41,7 +41,7 @@ void ListaAdyacencia::vaciar() {
         temp = temp->sgt;
         delete anterior;
     }
-    cabeza = new Vertice();
+    cabeza = NULL;
     nVertices = 0;
 }
 
@@ -146,7 +146,7 @@ vertice ListaAdyacencia::primerVertice() {
 }
 
 vertice ListaAdyacencia::sgtVertice(vertice v) {
-    if(v->sgt != NULL) {
+    if(v->sgt != NULL){
         return v->sgt;
     } else{
         return NULL;
@@ -168,9 +168,10 @@ vertice ListaAdyacencia::sgtVrtAdy(vertice v, vertice ad) {
     }
     if(temp->sgt != NULL){
         return temp->sgt->destino;
-    } else{
+    } else {
         return NULL;
     }
+
 }
 
 int ListaAdyacencia::numVertices() {

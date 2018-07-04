@@ -8,8 +8,7 @@
 
 void Diccionario::crear() {
     cantElementos = 0;
-    primero = new Caja();
-    ultimo = primero;
+    primero = NULL;
 }
 
 void Diccionario::destruir() {
@@ -46,10 +45,20 @@ void Diccionario::agregar(elemento elem) {
     Caja *nuevo = new Caja(elem);
     if(cantElementos==0){
         primero = nuevo;
-        ultimo = primero;
     }else{
-        ultimo->sgt = nuevo;
-        ultimo = ultimo->sgt;
+        Caja* aux = primero;
+        bool existe = false;
+        while(aux != NULL && !existe){
+            if(aux->elem == elem){
+                existe = true;
+            } else{
+                aux = aux->sgt;
+            }
+        }
+        if(!existe){
+         nuevo->sgt = primero;
+         primero = nuevo;
+        }
     }
     cantElementos++;
 }
@@ -57,13 +66,34 @@ void Diccionario::agregar(elemento elem) {
 void Diccionario::borrar(elemento elem) {
     Caja *aux = primero;
     Caja *anterior = NULL;
-    bool continuar = true;
+    bool existe = false;
+    while(aux != NULL && !existe){
+        if(aux->elem == elem){
+            existe = true;
+        } else {
+            anterior = aux;
+            aux = aux->sgt;
+        }
+    }
+    if(existe) {
+        if (anterior == NULL) {
+            primero = primero->sgt;
+            delete aux;
+            cantElementos--;
+        } else {
+            anterior->sgt = aux->sgt;
+            delete aux;
+            cantElementos--;
+        }
+    }
+
+    /*bool continuar = true;
     if(primero->elem == elem){
         primero = primero->sgt;
         delete aux;
         cantElementos--;
     }
-    while((aux!=NULL)&&(continuar)){
+    while(aux!=NULL && continuar){
         anterior = aux;
         aux = aux->sgt;
         if(aux->elem==elem){
@@ -72,12 +102,12 @@ void Diccionario::borrar(elemento elem) {
             cantElementos--;
             continuar = false;
         }
-    }
+    }*/
 }
 
 bool Diccionario::pertenece(elemento elem) {
     Caja *aux = primero;
-    while((aux!=NULL)){
+    while(aux != NULL){
         if(aux->elem==elem){
             return true;
         }
