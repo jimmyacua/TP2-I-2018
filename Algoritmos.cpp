@@ -325,7 +325,7 @@ vertice* Algoritmos::hamiltonRec(gnd &g, vertice v, int peso, vertice* ruta) {
         }
         ady = g.sgtVrtAdy(v, ady);
     }
-    return sol;
+    //return sol;
 }
 
 int Algoritmos::menorArista(int aristas[], bool visitados[], int tam) {
@@ -340,9 +340,10 @@ int Algoritmos::menorArista(int aristas[], bool visitados[], int tam) {
     return minInd;
 }
 
-void Algoritmos::prim(grafo &g) {
+void Algoritmos::prim(gnd &g) {
     int tamano = g.numVertices();
     int pesos[tamano][tamano];
+    vertice vertices[tamano];
     vertice comp;
     vertice indice = g.primerVertice();
     //Hace una matriz de adyacencia con los pesos
@@ -356,36 +357,44 @@ void Algoritmos::prim(grafo &g) {
             }
             comp = g.sgtVertice(comp);
         }
+        vertices[i]=indice;
         indice = g.sgtVertice(indice);
     }
 
     int aristasPesos[tamano];
     bool visitados[tamano];
     vertice camino[tamano];
+    int caminoInd[tamano];
 
     //Rellena los pesos y los visitados
-    for(int i=0;i<tamano;i++){
-        aristasPesos[i]=9999;//Se pone 1000 en lugar del INF
+    for (int i = 0; i < tamano; i++) {
+        aristasPesos[i] = 9999;//Se pone 1000 en lugar del INF
         visitados[i] = false;
     }
 
     aristasPesos[0] = 0;
     camino[0] = NULL;
+    caminoInd[0] = -1;
     int minimo;
 
-    for(int j=0; j < tamano-1; j++){
-        minimo = menorArista(aristasPesos,visitados,tamano);
+    for (int j = 0; j < tamano - 1; j++) {
+        minimo = menorArista(aristasPesos, visitados, tamano);
         visitados[minimo] = true;
-        for(int i=0;i<tamano;i++){
-            if((g.existeArista(minimo,i))&&(visitados[i]==false)&&(g.peso(minimo,i))){
-             //   camino[i] = minimo;
-             //   aristasPesos[i] = g.peso(minimo,i);
-            //}
+        for (int i = 0; i < tamano; i++) {
+            if ((pesos[minimo][i]>0) && (visitados[i] == false) && (pesos[minimo][i]<aristasPesos[i])) {
+                camino[i] = vertices[minimo];
+                caminoInd[i] = minimo;
+                aristasPesos[i] = pesos[minimo][i];
+
+            }
         }
+
     }
 
-      printf("Edge   Weight\n");
-   for (int i = 1; i < V; i++){
-      printf("%d - %d    %d \n", camino[i], i, graph[i][parent[i]]);
-     }
+    printf("Edge   Weight\n");
+    for (int i = 1; i < tamano; i++) {
+        cout<<camino[i]->etiqueta<<"   -" <<i<<"  "<<pesos[i][caminoInd[i]]<<endl;
+        //printf("%s - %d    %d \n", camino[i]->etiqueta, i, pesos[i][caminoInd[i]]);
+    }
+
 }

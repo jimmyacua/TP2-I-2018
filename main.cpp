@@ -29,8 +29,8 @@ int main(){
 
 
     Algoritmos algoritmos;
-    algoritmos.hamilton(g);
-
+    //algoritmos.hamilton(g);
+    algoritmos.prim(g);
     /*vertice v = g.primerVertice();
     while(v != NULL){
         cout << g.etiqueta(v) << ": ";
