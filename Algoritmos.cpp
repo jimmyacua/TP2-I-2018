@@ -269,11 +269,11 @@ void Algoritmos::hamilton(gnd &g) {
     vertice* ruta = new vertice[n];
     dvv.crear();
     numSolFact = 0;
-    solOPtima = 9999; //simula INF
+    solOPtima = 999; //simula INF
     dvv.agregar(g.primerVertice());
     vertice* rutaAct = hamiltonRec(g,g.primerVertice(), 0, ruta);
     delete[] ruta;
-    if(rutaAct != 0){
+    if(rutaAct != NULL){
         cout << g.etiqueta(g.primerVertice()) << "->";
         for (int i = 0; i < n - 1; i++) {
             cout << g.etiqueta(rutaAct[i]) << "->";
@@ -287,45 +287,45 @@ void Algoritmos::hamilton(gnd &g) {
     dvv.destruir();
 }
 
-vertice* Algoritmos::hamiltonRec(gnd &g, vertice v, int peso, vertice* array) {
-    vertice* sol = 0;
-    if(dvv.numElem() == g.numVertices()){
-        if(!g.existeArista(v,g.primerVertice())){
+vertice* Algoritmos::hamiltonRec(gnd &g, vertice v, int peso, vertice* ruta) {
+    vertice* solucion = 0;
+    if (dvv.numElem() == g.numVertices()) {
+        if (!g.existeArista(v, g.primerVertice())) {
             return 0;
-        }
-        peso += g.peso(v,g.primerVertice());
-        numSolFact++;
-        if(peso < solOPtima){
-            int n = g.numVertices();
-            sol = new vertice[n];
-            solOPtima = peso;
-            for(int i = 0; i < n-1; i++){
-                sol[i] = array[i];
-            }
-            sol[n-1] = g.primerVertice();
-        }
-        return sol;
-    }
-
-    vertice ady = g.primerVrtAdy(v);
-    while(ady != NULL){
-        if(!dvv.pertenece(ady)){
-            dvv.agregar(ady);
-            peso += g.peso(v,ady);
-            array[dvv.numElem()-2] = ady;
-            vertice* solP = hamiltonRec(g,ady,peso,array);
-            if(solP != 0){
-                if(sol != 0){
-                    delete[] sol;
+        } else {
+            peso += g.peso(v, g.primerVertice());
+            numSolFact++;
+            if (peso < solOPtima) {
+                const int n = g.numVertices();
+                solucion = new vertice[n];
+                solOPtima = peso;
+                for (int i = 0; i < n - 1; i++) {
+                    solucion[i] = ruta[i];
                 }
-                sol = solP;
+                solucion[n - 1] = g.primerVertice();
+            }
+            return solucion;
+        }
+    }
+    vertice ady = g.primerVrtAdy(v);
+    while (ady != 0) {
+        if (!dvv.pertenece(ady)) {
+            dvv.agregar(ady);
+            peso += g.peso(v, ady);
+            ruta[dvv.numElem() - 2] = ady;
+            vertice* solP = hamiltonRec(g, ady, peso, ruta);
+            if (solP != 0) {
+                if (solucion != 0) {
+                    delete[] solucion;
+                }
+                solucion = solP;
             }
             dvv.borrar(ady);
-            peso -= g.peso(v,ady);
+            peso -= g.peso(v, ady);
         }
-        ady = g.sgtVrtAdy(v,ady);
+        ady = g.sgtVrtAdy(v, ady);
     }
-    return sol;
+    //return sol;
 }
 
 int Algoritmos::menorArista(int aristas[], bool visitados[], int tam) {
@@ -395,4 +395,5 @@ void Algoritmos::prim(grafo &g) {
     for (int i = 1; i < tamano; i++) {
         printf("%d - %d    %d \n", camino[i]->etiqueta, i, pesos[i][caminoInd[i]]);
     }
+
 }
