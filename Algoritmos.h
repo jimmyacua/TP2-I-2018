@@ -9,7 +9,7 @@
 #include <vector>
 #include <queue>
 
-//#include "GrafoDirigListAdy.h"
+#include "GrafoDirigListAdy.h"
 //#include "GrafoMatriz.h"
 #include "Relacion1a1.h"
 #include "Diccionario.h"
@@ -21,6 +21,7 @@ using namespace std;
 
 
 typedef ListaAdyacencia grafo;
+typedef vertice vert;
 
 typedef GrafoNODirigido gnd;
 
@@ -36,7 +37,7 @@ public:
     //EFE:
     //REQ:
     //MOD:
-    void dijkstra(grafo& g, vertice o);
+    void dijkstra(grafo& g, vert o);
 
     //EFE:
     //REQ:
@@ -51,7 +52,7 @@ public:
     //EFE:
     //REQ:
     //MOD:
-    void eliminarVertNoAislado(grafo& g, vertice v);
+    void eliminarVertNoAislado(grafo& g, vert v);
 
     //EFE:
     //REQ:
@@ -73,11 +74,11 @@ private:
     //EFE:
     //REQ:
     //MOD:
-    void profPrimeroRec(grafo, vertice);
+    void profPrimeroRec(grafo, vert);
 
-    void menor(vertice actual, int pos, vertice ad,int posAd,  int peso);
+    void menor(vert actual, int pos, vert ad,int posAd,  int peso);
 
-    vertice* hamiltonRec(gnd& g, vertice v, int peso, vertice*);
+    vertice* hamiltonRec(gnd& g, vert v, int peso, vert*);
 
     int solOPtima;
     int numSolFact;

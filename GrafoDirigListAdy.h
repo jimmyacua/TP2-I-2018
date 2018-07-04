@@ -25,6 +25,7 @@ struct Vertice{
 
     Vertice(string e){
         etiqueta = e;
+        sgt = NULL;
         ady = NULL;
         numVrtAdy = 0;
     };
