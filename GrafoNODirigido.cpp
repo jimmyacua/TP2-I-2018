@@ -23,6 +23,7 @@ bool GrafoNODirigido::vacio() {
 
 vert GrafoNODirigido::agregarVertice(string e) {
     vert nuevo = g.agregarVertice(e);
+    nVertices++;
     return nuevo;
 }
 

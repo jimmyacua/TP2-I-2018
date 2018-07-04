@@ -233,43 +233,43 @@ void Algoritmos::hamilton(gnd &g) {
     dvv.destruir();
 }
 
-vertice* Algoritmos::hamiltonRec(gnd &g, vertice v, int peso, vertice* array) {
-    vertice* sol = NULL;
-    if(dvv.numElem() == g.numVertices()){
-        if(!g.existeArista(v,g.primerVertice())){
-            return NULL;
-        }
-        peso += g.peso(v,g.primerVertice());
-        numSolFact++;
-        if(peso < solOPtima){
-            int n = g.numVertices();
-            sol = new vertice[n];
-            solOPtima = peso;
-            for(int i = 0; i < n-1; i++){
-                sol[i] = array[i];
-            }
-            sol[n-1] = g.primerVertice();
-        }
-        return sol;
-    }
-
-    vertice ady = g.primerVrtAdy(v);
-    while(ady != NULL){
-        if(!dvv.pertenece(ady)){
-            dvv.agregar(ady);
-            peso += g.peso(v,ady);
-            array[dvv.numElem()-2] = ady;
-            vertice* solP = hamiltonRec(g,ady,peso,array);
-            if(solP != NULL){
-                if(sol != NULL){
-                    delete[] sol;
+vertice* Algoritmos::hamiltonRec(gnd &g, vertice v, int peso, vertice* ruta) {
+    vertice* solucion = 0;
+    if (dvv.numElem() == g.numVertices()) {
+        if (!g.existeArista(v, g.primerVertice())) {
+            return 0;
+        } else {
+            peso += g.peso(v, g.primerVertice());
+            numSolFact++;
+            if (peso < solOPtima) {
+                const int n = g.numVertices();
+                solucion = new vertice[n];
+                solOPtima = peso;
+                for (int i = 0; i < n - 1; i++) {
+                    solucion[i] = ruta[i];
                 }
-                sol = solP;
+                solucion[n - 1] = g.primerVertice();
+            }
+            return solucion;
+        }
+    }
+    vertice ady = g.primerVrtAdy(v);
+    while (ady != 0) {
+        if (!dvv.pertenece(ady)) {
+            dvv.agregar(ady);
+            peso += g.peso(v, ady);
+            ruta[dvv.numElem() - 2] = ady;
+            vertice* solP = hamiltonRec(g, ady, peso, ruta);
+            if (solP != 0) {
+                if (solucion != 0) {
+                    delete[] solucion;
+                }
+                solucion = solP;
             }
             dvv.borrar(ady);
-            peso -= g.peso(v,ady);
+            peso -= g.peso(v, ady);
         }
-        ady = g.sgtVrtAdy(v,ady);
+        ady = g.sgtVrtAdy(v, ady);
     }
-    return sol;
+    return solucion;
 }
