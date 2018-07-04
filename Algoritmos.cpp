@@ -215,11 +215,11 @@ void Algoritmos::hamilton(gnd &g) {
     vertice* ruta = new vertice[n];
     dvv.crear();
     numSolFact = 0;
-    solOPtima = 9999; //simula INF
+    solOPtima = 999; //simula INF
     dvv.agregar(g.primerVertice());
     vertice* rutaAct = hamiltonRec(g,g.primerVertice(), 0, ruta);
     delete[] ruta;
-    if(rutaAct != 0){
+    if(rutaAct != NULL){
         cout << g.etiqueta(g.primerVertice()) << "->";
         for (int i = 0; i < n - 1; i++) {
             cout << g.etiqueta(rutaAct[i]) << "->";
@@ -234,10 +234,10 @@ void Algoritmos::hamilton(gnd &g) {
 }
 
 vertice* Algoritmos::hamiltonRec(gnd &g, vertice v, int peso, vertice* array) {
-    vertice* sol = 0;
+    vertice* sol = NULL;
     if(dvv.numElem() == g.numVertices()){
         if(!g.existeArista(v,g.primerVertice())){
-            return 0;
+            return NULL;
         }
         peso += g.peso(v,g.primerVertice());
         numSolFact++;
@@ -260,8 +260,8 @@ vertice* Algoritmos::hamiltonRec(gnd &g, vertice v, int peso, vertice* array) {
             peso += g.peso(v,ady);
             array[dvv.numElem()-2] = ady;
             vertice* solP = hamiltonRec(g,ady,peso,array);
-            if(solP != 0){
-                if(sol != 0){
+            if(solP != NULL){
+                if(sol != NULL){
                     delete[] sol;
                 }
                 sol = solP;

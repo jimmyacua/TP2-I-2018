@@ -59,7 +59,6 @@ public:
     int numElem();
 private:
     Caja *primero;
-    Caja *ultimo;
     int cantElementos;
 };
 #endif //TP2_I_2018_DICCIONARIO_H
