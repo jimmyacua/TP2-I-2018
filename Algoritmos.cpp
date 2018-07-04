@@ -111,6 +111,60 @@ void Algoritmos::dijkstra(grafo& g, vertice o) {
     }
 }
 
+void Algoritmos::floyd(grafo& g) {
+    int tamano = g.numVertices();
+    int pesos[tamano][tamano];
+    string caminos[tamano][tamano];
+    vertice indice = g.primerVertice();
+    for (int i = 0; i < tamano; i++) {
+        vertice comp = g.primerVertice();
+        for (int j = 0; j < tamano; j++) {
+            caminos[j][i] = g.etiqueta(indice);
+            if (g.existeArista(indice, comp)) {
+                pesos[i][j] = g.peso(indice, comp);
+            } else {
+                pesos[i][j] = 1000;
+            }
+            comp = g.sgtVertice(comp);
+        }
+        indice = g.sgtVertice(indice);
+    }
+    indice = g.primerVertice();
+    for (int k = 0; k < tamano; k++) {
+        for (int i = 0; i < tamano; i++){
+            for (int j = 0; j < tamano; j++){
+                if (pesos[i][k] + pesos[k][j] < pesos[i][j]) {
+                    pesos[i][j] = pesos[i][k] + pesos[k][j];
+                    caminos[i][j] = g.etiqueta(indice);
+                }
+            }
+        }
+        indice = g.sgtVertice(indice);
+    }
+
+    for (int i = 0; i < tamano; i++)
+    {
+        for (int j = 0; j < tamano; j++)
+        {
+            if (pesos[i][j] == 1000)
+                printf("%7s", "INF");
+            else
+                printf ("%7d", pesos[i][j]);
+        }
+        printf("\n");
+    }
+
+    for (int i = 0; i < tamano; i++)
+    {
+        for (int j = 0; j < tamano; j++)
+        {
+            cout<<caminos[i][j]<<" ";
+            //printf ("%7d", caminos[i][j]);
+        }
+        printf("\n");
+    }
+}
+
 void Algoritmos::menor(vertice actual, int pos, vertice ad, int posAd ,int peso) {
     if(distancia[pos]+peso < distancia[posAd]){
         distancia[posAd] = peso;
@@ -271,5 +325,67 @@ vertice* Algoritmos::hamiltonRec(gnd &g, vertice v, int peso, vertice* ruta) {
         }
         ady = g.sgtVrtAdy(v, ady);
     }
-    return solucion;
+    return sol;
+}
+
+int Algoritmos::menorArista(int aristas[], bool visitados[], int tam) {
+    int min = 9999;
+    int minInd;
+    for(int i=0; i<tam; i++){
+        if(visitados[i]==false&&aristas[i]<min){
+            min = aristas[i];
+            minInd = i;
+        }
+    }
+    return minInd;
+}
+
+void Algoritmos::prim(grafo &g) {
+    int tamano = g.numVertices();
+    int pesos[tamano][tamano];
+    vertice comp;
+    vertice indice = g.primerVertice();
+    //Hace una matriz de adyacencia con los pesos
+    for (int i = 0; i < tamano; i++) {
+        comp = g.primerVertice();
+        for (int j = 0; j < tamano; j++) {
+            if (g.existeArista(indice, comp)) {
+                pesos[i][j] = g.peso(indice, comp);
+            } else {
+                pesos[i][j] = 9999;
+            }
+            comp = g.sgtVertice(comp);
+        }
+        indice = g.sgtVertice(indice);
+    }
+
+    int aristasPesos[tamano];
+    bool visitados[tamano];
+    vertice camino[tamano];
+
+    //Rellena los pesos y los visitados
+    for(int i=0;i<tamano;i++){
+        aristasPesos[i]=9999;//Se pone 1000 en lugar del INF
+        visitados[i] = false;
+    }
+
+    aristasPesos[0] = 0;
+    camino[0] = NULL;
+    int minimo;
+
+    for(int j=0; j < tamano-1; j++){
+        minimo = menorArista(aristasPesos,visitados,tamano);
+        visitados[minimo] = true;
+        for(int i=0;i<tamano;i++){
+            if((g.existeArista(minimo,i))&&(visitados[i]==false)&&(g.peso(minimo,i))){
+             //   camino[i] = minimo;
+             //   aristasPesos[i] = g.peso(minimo,i);
+            //}
+        }
+    }
+
+      printf("Edge   Weight\n");
+   for (int i = 1; i < V; i++){
+      printf("%d - %d    %d \n", camino[i], i, graph[i][parent[i]]);
+     }
 }

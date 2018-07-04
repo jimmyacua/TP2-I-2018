@@ -12,6 +12,7 @@
 #include <iostream>
 
 using namespace std;
+
 typedef ListaIndexadaLSE listaInd;
 typedef int vertice;
 typedef int arista;
@@ -20,7 +21,7 @@ public:
     //Efecto:
     //Requiere:
     //Modifica:
-    void iniciar();
+    void crear();
     //Efecto:
     //Requiere:
     //Modifica:
@@ -72,19 +73,19 @@ public:
     //Efecto:
     //Requiere:
     //Modifica:
-    vertice siguieteVertice(vertice);
+    vertice sgtVertice(vertice);
     //Efecto:
     //Requiere:
     //Modifica:
-    bool hayArista(vertice,vertice);
+    bool existeArista(vertice,vertice);
     //Efecto:
     //Requiere:
     //Modifica:
-    vertice primerVerticeAdyacente(vertice);
+    vertice primerVrtAdy(vertice);
     //Efecto:
     //Requiere:
     //Modifica:
-    vertice siguienteVerticeAdyacente(vertice,vertice);
+    vertice sgtVrtAdy(vertice,vertice);
     //Efecto:
     //Requiere:
     //Modifica:
@@ -95,8 +96,12 @@ public:
     int numAristas();
 
     void mostrar();
+
+    vertice traduceVrt(string);
+
 private:
-    int matrizAdyacencia[20][20];
+    int tam = 6;
+    int matrizAdyacencia[6][6];
     int cantVertices;
     int cantAristas;
     int ultimoLleno;

@@ -15,12 +15,11 @@ struct Vertice{
     Vertice *sgt;
     struct Arista *ady;
     int numVrtAdy;
-
     Vertice(){
         etiqueta = "";
         sgt = NULL;
         ady = NULL;
-        numVrtAdy = 0;
+        numVrtAdy =0;
     };
 
     Vertice(string e){
@@ -139,7 +138,6 @@ public:
     //REQ: grafo inicializado
     //MOD: -
     int numVertices();
-
     //EFE: devuelve el numero de vertices adyacentes a v
     //REQ: grafo inicializado y v valido
     //MOD: -
