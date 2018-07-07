@@ -364,6 +364,8 @@ void Algoritmos::prim(gnd &g) {
     int aristasPesos[tamano];
     bool visitados[tamano];
     vertice camino[tamano];
+    vertice gemelo[tamano];
+    relacion1a1.crear();
     int caminoInd[tamano];
 
     //Rellena los pesos y los visitados
@@ -373,19 +375,21 @@ void Algoritmos::prim(gnd &g) {
     }
 
     aristasPesos[0] = 0;
-    camino[0] = NULL;
+    camino[0] = vertices[0];
     caminoInd[0] = -1;
     int minimo;
-
+    int cont = 0;
     for (int j = 0; j < tamano - 1; j++) {
         minimo = menorArista(aristasPesos, visitados, tamano);
         visitados[minimo] = true;
+        cont = 0;
         for (int i = 0; i < tamano; i++) {
             if ((pesos[minimo][i]>0) && (visitados[i] == false) && (pesos[minimo][i]<aristasPesos[i])) {
+                relacion1a1.agregarRelacion(vertices[minimo],vertices[i]);
                 camino[i] = vertices[minimo];
+                gemelo[i] = vertices[i];
                 caminoInd[i] = minimo;
                 aristasPesos[i] = pesos[minimo][i];
-
             }
         }
 
@@ -393,7 +397,7 @@ void Algoritmos::prim(gnd &g) {
 
     printf("Edge   Weight\n");
     for (int i = 1; i < tamano; i++) {
-        cout<<camino[i]->etiqueta<<"   -" <<i<<"  "<<pesos[i][caminoInd[i]]<<endl;
+        cout<<camino[i]->etiqueta<<"   -" <<gemelo[i]->etiqueta<<"  "<<pesos[i][caminoInd[i]]<<endl;
         //printf("%s - %d    %d \n", camino[i]->etiqueta, i, pesos[i][caminoInd[i]]);
     }
 

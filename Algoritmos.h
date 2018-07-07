@@ -69,7 +69,7 @@ public:
     //MOD:
     void hamilton(gnd& g);
 
-    int menorArista(int aristas[],bool visitados[],int tam);
+    int menorArista(int aristas[], bool visitados[], int tam);
 
     //EFE:
     //REQ:
