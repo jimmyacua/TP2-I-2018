@@ -8,11 +8,11 @@
 #include "GrafoDirigListAdy.h"
 //#include "GrafoMatriz.h"
 
-typedef ListaAdyacencia grafo;
+typedef ListaAdyacencia gd;
 typedef vertice vert;
 
-//typedef GrafoMatriz grafo;
-// vertice int
+//typedef GrafoMatriz gd;
+//typedef int vert;
 
 
 class GrafoNODirigido {
@@ -119,7 +119,7 @@ public:
 
 private:
     int nVertices;
-    grafo g;
+    gd g;
 };
 
 
