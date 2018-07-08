@@ -396,5 +396,5 @@ void Algoritmos::prim(gnd &g) {
         cout<<camino[i]->etiqueta<<"   -" <<i<<"  "<<pesos[i][caminoInd[i]]<<endl;
         //printf("%s - %d    %d \n", camino[i]->etiqueta, i, pesos[i][caminoInd[i]]);
     }
-
 }
+

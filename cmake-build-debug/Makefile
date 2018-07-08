@@ -39,19 +39,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /home/jimmy/Descargas/clion-2018.1.2/bin/cmake/bin/cmake
+CMAKE_COMMAND = /home/felipe/Documentos/clion-2018.1.2/bin/cmake/bin/cmake
 
 # The command to remove a file.
-RM = /home/jimmy/Descargas/clion-2018.1.2/bin/cmake/bin/cmake -E remove -f
+RM = /home/felipe/Documentos/clion-2018.1.2/bin/cmake/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/jimmy/CLionProjects/TP2-I-2018
+CMAKE_SOURCE_DIR = /home/felipe/CLionProjects/TP2-I-2018
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/jimmy/CLionProjects/TP2-I-2018/cmake-build-debug
+CMAKE_BINARY_DIR = /home/felipe/CLionProjects/TP2-I-2018/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -59,7 +59,7 @@ CMAKE_BINARY_DIR = /home/jimmy/CLionProjects/TP2-I-2018/cmake-build-debug
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/home/jimmy/Descargas/clion-2018.1.2/bin/cmake/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/home/felipe/Documentos/clion-2018.1.2/bin/cmake/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -70,7 +70,7 @@ rebuild_cache/fast: rebuild_cache
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/home/jimmy/Descargas/clion-2018.1.2/bin/cmake/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+	/home/felipe/Documentos/clion-2018.1.2/bin/cmake/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/jimmy/CLionProjects/TP2-I-2018/cmake-build-debug/CMakeFiles /home/jimmy/CLionProjects/TP2-I-2018/cmake-build-debug/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/felipe/CLionProjects/TP2-I-2018/cmake-build-debug/CMakeFiles /home/felipe/CLionProjects/TP2-I-2018/cmake-build-debug/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/jimmy/CLionProjects/TP2-I-2018/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/felipe/CLionProjects/TP2-I-2018/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -123,32 +123,32 @@ TP2-I-2018/fast:
 	$(MAKE) -f CMakeFiles/TP2-I-2018.dir/build.make CMakeFiles/TP2-I-2018.dir/build
 .PHONY : TP2-I-2018/fast
 
-AlgoritmosGrafoDirigido.o: AlgoritmosGrafoDirigido.cpp.o
+Algoritmos.o: Algoritmos.cpp.o
 
-.PHONY : AlgoritmosGrafoDirigido.o
+.PHONY : Algoritmos.o
 
 # target to build an object file
-AlgoritmosGrafoDirigido.cpp.o:
-	$(MAKE) -f CMakeFiles/TP2-I-2018.dir/build.make CMakeFiles/TP2-I-2018.dir/AlgoritmosGrafoDirigido.cpp.o
-.PHONY : AlgoritmosGrafoDirigido.cpp.o
+Algoritmos.cpp.o:
+	$(MAKE) -f CMakeFiles/TP2-I-2018.dir/build.make CMakeFiles/TP2-I-2018.dir/Algoritmos.cpp.o
+.PHONY : Algoritmos.cpp.o
 
-AlgoritmosGrafoDirigido.i: AlgoritmosGrafoDirigido.cpp.i
+Algoritmos.i: Algoritmos.cpp.i
 
-.PHONY : AlgoritmosGrafoDirigido.i
+.PHONY : Algoritmos.i
 
 # target to preprocess a source file
-AlgoritmosGrafoDirigido.cpp.i:
-	$(MAKE) -f CMakeFiles/TP2-I-2018.dir/build.make CMakeFiles/TP2-I-2018.dir/AlgoritmosGrafoDirigido.cpp.i
-.PHONY : AlgoritmosGrafoDirigido.cpp.i
+Algoritmos.cpp.i:
+	$(MAKE) -f CMakeFiles/TP2-I-2018.dir/build.make CMakeFiles/TP2-I-2018.dir/Algoritmos.cpp.i
+.PHONY : Algoritmos.cpp.i
 
-AlgoritmosGrafoDirigido.s: AlgoritmosGrafoDirigido.cpp.s
+Algoritmos.s: Algoritmos.cpp.s
 
-.PHONY : AlgoritmosGrafoDirigido.s
+.PHONY : Algoritmos.s
 
 # target to generate assembly for a file
-AlgoritmosGrafoDirigido.cpp.s:
-	$(MAKE) -f CMakeFiles/TP2-I-2018.dir/build.make CMakeFiles/TP2-I-2018.dir/AlgoritmosGrafoDirigido.cpp.s
-.PHONY : AlgoritmosGrafoDirigido.cpp.s
+Algoritmos.cpp.s:
+	$(MAKE) -f CMakeFiles/TP2-I-2018.dir/build.make CMakeFiles/TP2-I-2018.dir/Algoritmos.cpp.s
+.PHONY : Algoritmos.cpp.s
 
 Diccionario.o: Diccionario.cpp.o
 
@@ -267,9 +267,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... TP2-I-2018"
-	@echo "... AlgoritmosGrafoDirigido.o"
-	@echo "... AlgoritmosGrafoDirigido.i"
-	@echo "... AlgoritmosGrafoDirigido.s"
+	@echo "... Algoritmos.o"
+	@echo "... Algoritmos.i"
+	@echo "... Algoritmos.s"
 	@echo "... Diccionario.o"
 	@echo "... Diccionario.i"
 	@echo "... Diccionario.s"

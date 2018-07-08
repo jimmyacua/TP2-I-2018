@@ -12,7 +12,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e8af264b-522d-4422-a63d-1c0c49218072" name="Default" comment="">
+<<<<<<< HEAD
+<<<<<<< Updated upstream
+=======
       <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" />
+>>>>>>> master
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.10.3/CMakeSystem.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.10.3/CMakeSystem.cmake" afterDir="false" />
@@ -34,8 +38,15 @@
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Makefile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/TP2" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/TP2" afterDir="false" />
+<<<<<<< HEAD
+=======
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" afterDir="false" />
+>>>>>>> Stashed changes
+=======
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/TP2.cbp" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/TP2.cbp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/cmake_install.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/cmake_install.cmake" afterDir="false" />
+>>>>>>> master
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -48,11 +59,27 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+<<<<<<< HEAD
+<<<<<<< Updated upstream
+      <file leaf-file-name="Diccionario.cpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Diccionario.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1350">
+              <caret line="90" column="22" selection-start-line="90" selection-start-column="22" selection-end-line="90" selection-end-column="22" />
+=======
+      <file leaf-file-name="Diccionario.cpp" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Diccionario.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="355">
+              <caret line="75" column="5" selection-start-line="75" selection-start-column="5" selection-end-line="75" selection-end-column="5" />
+>>>>>>> Stashed changes
+=======
       <file leaf-file-name="main.cpp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.cpp">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="345">
               <caret line="23" column="1" selection-start-line="23" selection-start-column="1" selection-end-line="23" selection-end-column="1" />
+>>>>>>> master
               <folding>
                 <element signature="e#40#64#0" expanded="true" />
               </folding>
@@ -60,6 +87,74 @@
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
+      <file leaf-file-name="GrafoMatriz.cpp" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/GrafoMatriz.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1560">
+              <caret line="131" column="23" lean-forward="true" selection-start-line="131" selection-start-column="23" selection-end-line="131" selection-end-column="23" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GrafoMatriz.h" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/GrafoMatriz.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="240">
+              <caret line="58" column="41" lean-forward="true" selection-start-line="58" selection-start-column="41" selection-end-line="58" selection-end-column="41" />
+              <folding>
+                <element signature="e#122#151#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ListaIndexadaLSE.cpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ListaIndexadaLSE.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="356">
+              <caret line="36" column="17" selection-start-line="36" selection-start-column="17" selection-end-line="36" selection-end-column="17" />
+              <folding>
+                <element signature="e#41#70#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ListaIndexadaLSE.h" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ListaIndexadaLSE.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="161">
+              <caret line="59" column="29" lean-forward="true" selection-start-line="59" selection-start-column="29" selection-end-line="59" selection-end-column="29" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CMakeLists.txt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="75">
+              <caret line="5" column="141" selection-start-line="5" selection-start-column="141" selection-end-line="5" selection-end-column="141" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Diccionario.h" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Diccionario.h">
+          <provider selected="true" editor-type-id="text-editor">
+<<<<<<< Updated upstream
+            <state relative-caret-position="405">
+              <caret line="27" column="15" selection-start-line="25" selection-start-column="3" selection-end-line="27" selection-end-column="15" />
+=======
+            <state relative-caret-position="120">
+              <caret line="8" selection-start-line="8" selection-end-line="8" />
+>>>>>>> Stashed changes
+            </state>
+          </provider>
+        </entry>
+      </file>
+=======
+>>>>>>> master
     </leaf>
   </component>
   <component name="Git.Settings">
@@ -149,17 +244,41 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1528659159151</updated>
+<<<<<<< Updated upstream
       <workItem from="1528659161427" duration="8693000" />
       <workItem from="1528686599207" duration="1001000" />
       <workItem from="1528830000334" duration="1872000" />
       <workItem from="1528844983864" duration="781000" />
       <workItem from="1528854822626" duration="6316000" />
       <workItem from="1528897466989" duration="7314000" />
+<<<<<<< HEAD
+=======
+      <workItem from="1528659161427" duration="6929000" />
+      <workItem from="1528914676463" duration="604000" />
+>>>>>>> Stashed changes
+=======
       <workItem from="1530575395596" duration="612000" />
+>>>>>>> master
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< HEAD
+<<<<<<< Updated upstream
+    <option name="totallyTimeSpent" value="25977000" />
+=======
+    <option name="totallyTimeSpent" value="7533000" />
+>>>>>>> Stashed changes
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="67" y="25" width="1533" height="875" extended-state="6" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24983692" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+<<<<<<< Updated upstream
+      <window_info active="true" anchor="bottom" id="Messages" order="7" visible="true" weight="0.32941177" />
+      <window_info anchor="bottom" id="CMake" order="11" weight="0.32941177" />
+=======
     <option name="totallyTimeSpent" value="27030000" />
   </component>
   <component name="ToolWindowManager">
@@ -170,11 +289,20 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Messages" order="7" weight="0.32941177" />
       <window_info anchor="bottom" id="CMake" order="11" weight="0.328594" />
+>>>>>>> master
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="10" />
       <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.328594" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="8" />
+=======
+      <window_info anchor="bottom" id="CMake" order="7" />
+      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Terminal" order="7" />
+>>>>>>> Stashed changes
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -184,6 +312,10 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Find" order="1" />
+<<<<<<< Updated upstream
+=======
+      <window_info active="true" anchor="bottom" id="Messages" order="7" visible="true" weight="0.32941177" />
+>>>>>>> Stashed changes
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -208,6 +340,7 @@
     <entry file="file://$PROJECT_DIR$/GrafoMatriz.cpp" />
     <entry file="file://$PROJECT_DIR$/Diccionario.cpp">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< Updated upstream
         <state relative-caret-position="1350">
           <caret line="90" column="22" selection-start-line="90" selection-start-column="22" selection-end-line="90" selection-end-column="22" />
           <folding>
@@ -382,6 +515,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1350">
           <caret line="90" column="22" selection-start-line="90" selection-start-column="22" selection-end-line="90" selection-end-column="22" />
+=======
+        <state relative-caret-position="1110">
+          <caret line="74" column="5" lean-forward="true" selection-start-line="74" selection-start-column="5" selection-end-line="74" selection-end-column="5" />
+>>>>>>> Stashed changes
           <folding>
             <element signature="e#41#65#0" expanded="true" />
           </folding>
@@ -422,16 +559,29 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Diccionario.h">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state relative-caret-position="120">
+          <caret line="8" selection-start-line="8" selection-end-line="8" />
+        </state>
+      </provider>
+    </entry>
+=======
         <state relative-caret-position="405">
           <caret line="27" column="15" lean-forward="true" selection-start-line="25" selection-start-column="3" selection-end-line="27" selection-end-column="15" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/GrafoMatriz.cpp" />
+>>>>>>> master
     <entry file="file://$PROJECT_DIR$/Diccionario.cpp">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< Updated upstream
         <state relative-caret-position="1350">
           <caret line="90" column="22" selection-start-line="90" selection-start-column="22" selection-end-line="90" selection-end-column="22" />
+=======
+        <state relative-caret-position="355">
+          <caret line="75" column="5" selection-start-line="75" selection-start-column="5" selection-end-line="75" selection-end-column="5" />
+>>>>>>> Stashed changes
           <folding>
             <element signature="e#41#65#0" expanded="true" />
           </folding>
