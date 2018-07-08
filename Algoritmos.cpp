@@ -218,17 +218,17 @@ bool Algoritmos::iguales(grafo &g1, grafo &g2) {
     return sonIguales;
 }
 
-grafo Algoritmos::copiarGrafo(grafo g1) {
+grafo Algoritmos::copiarGrafo(grafo& g1) {
     grafo g2;
     g2.crear();
     relacion1a1.crear();
     vertice v1 = g1.primerVertice();
     while(v1 != NULL){
-        adyacente ad = v1->ady;
+        vertice ad = g1.primerVrtAdy(v1);
         g2.agregarVertice(g1.etiqueta(v1));
         while(ad != NULL){
-            relacion1a1.agregarRelacion(v1,ad->destino);
-            ad = ad->sgt;
+            relacion1a1.agregarRelacion(v1,ad);
+            ad = g1.sgtVrtAdy(v1,ad);
         }
         v1 = g1.sgtVertice(v1);
     }
@@ -237,7 +237,7 @@ grafo Algoritmos::copiarGrafo(grafo g1) {
         vertice aux = g1.primerVertice();
         while(aux != NULL) {
             if (relacion1a1.existeRelacion(v1, aux)) {
-                g2.agregarArista(g2.traduceVrt(g1.etiqueta(v1)), g1.traduceVrt(g1.etiqueta(aux)), g1.peso(v1, aux));
+                g2.agregarArista(g2.traduceVrt(g2.etiqueta(v1)), g2.traduceVrt(g1.etiqueta(aux)), g1.peso(v1, aux));
             }
             aux = g1.sgtVertice(aux);
         }
@@ -325,7 +325,7 @@ vertice* Algoritmos::hamiltonRec(gnd &g, vertice v, int peso, vertice* ruta) {
         }
         ady = g.sgtVrtAdy(v, ady);
     }
-    //return sol;
+    return solucion;
 }
 
 int Algoritmos::menorArista(int aristas[], bool visitados[], int tam) {
@@ -396,5 +396,5 @@ void Algoritmos::prim(gnd &g) {
         cout<<camino[i]->etiqueta<<"   -" <<i<<"  "<<pesos[i][caminoInd[i]]<<endl;
         //printf("%s - %d    %d \n", camino[i]->etiqueta, i, pesos[i][caminoInd[i]]);
     }
-
 }
+
