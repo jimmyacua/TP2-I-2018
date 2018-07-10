@@ -11,6 +11,7 @@ typedef ListaAdyacencia gd;
 //typedef GrafoMatriz gd;
 
 int main(){
+
     GrafoNODirigido gnd;
     gnd.crear();
     gnd.agregarVertice("e");

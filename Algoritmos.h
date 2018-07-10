@@ -6,22 +6,22 @@
 #define TP2_I_2018_ALGORITMOSGRAFODIRIGIDO_H
 
 #include <iostream>
-#include <vector>
-#include <queue>
 
-#include "GrafoDirigListAdy.h"
+//#include "GrafoDirigListAdy.h"
+//#include "ListaIndexadaLSE.h"
 //#include "GrafoMatriz.h"
 #include "Relacion1a1.h"
 #include "Diccionario.h"
 #include "GrafoNODirigido.h"
 
-#define Node pair<vertice, int> //vrt adyacente y peso de arista
-#define MAX = 20;
 using namespace std;
 
 
 typedef ListaAdyacencia grafo;
 typedef vertice vert;
+
+//typedef GrafoMatriz grafo;
+//typedef int vert;
 
 typedef GrafoNODirigido gnd;
 
@@ -75,7 +75,7 @@ private:
     int menorArista(int aristas[],bool visitados[],int tam);
 
 
-    vertice* hamiltonRec(gnd& g, vert v, int peso, vert*);
+    vert* hamiltonRec(gnd& g, vert v, int peso, vert*);
     vert minimo(grafo, vert, int);
 
     int solOPtima;

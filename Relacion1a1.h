@@ -92,7 +92,7 @@ private:
         Elem(V e1, W e2){
             elemento1 = e1;
             elemento2 = e2;
-            sgt = NULL;
+            sgt = 0;
         }
     };
     Elem<T,S> *primero;
@@ -101,15 +101,15 @@ private:
 
 template <typename T, typename S>
 void Relacion1a1<T,S>::crear() {
-    primero = NULL;
+    primero = 0;
     nElementos = 0;
 }
 
 template <typename T, typename S>
 void Relacion1a1<T,S>::destruir() {
-    Elem<T,S> *anterior = NULL;
+    Elem<T,S> *anterior = 0;
     Elem<T,S> *temp = primero;
-    while(temp != NULL){
+    while(temp != 0){
         anterior = temp;
         temp = temp->sgt;
         delete anterior;
@@ -121,12 +121,12 @@ template <typename T, typename S>
 void Relacion1a1<T,S>::vaciar() {
     Elem<T,S> *anterior;
     Elem<T,S> *temp = primero;
-    while(temp != NULL){
+    while(temp != 0){
         anterior = temp;
         temp = temp->sgt;
         delete anterior;
     }
-    primero = NULL;
+    primero = 0;
     nElementos = 0;
 }
 
@@ -154,8 +154,8 @@ void Relacion1a1<T,S>::agregarRelacion(T e1, S e2){
 template <typename T, typename S>
 void Relacion1a1<T,S>::eliminarRelacion(T e1, S e2) {
     Elem<T,S> *temp = primero;
-    Elem<T,S> *anterior = NULL;
-    while(temp != NULL && temp->elemento1 != e1){
+    Elem<T,S> *anterior = 0;
+    while(temp != 0 && temp->elemento1 != e1){
         anterior = temp;
         temp = temp->sgt;
     }
@@ -173,10 +173,10 @@ void Relacion1a1<T,S>::eliminarRelacion(T e1, S e2) {
 template <typename T, typename S>
 void Relacion1a1<T,S>::modificarImagen(T e1, S nE) {
     Elem<T,S> *temp = primero;
-    while(temp != NULL && temp->elemento1 != e1){
+    while(temp != 0 && temp->elemento1 != e1){
         temp = temp->sgt;
     }
-    if(temp != NULL){
+    if(temp != 0){
         temp->elemento2 = nE;
     }
 }
@@ -184,7 +184,7 @@ void Relacion1a1<T,S>::modificarImagen(T e1, S nE) {
 template <typename T, typename S>
 bool Relacion1a1<T,S>::existeRelacion(T e1, S e2) {
     Elem<T,S> *temp = primero;
-    while(temp != NULL){
+    while(temp != 0){
         if(temp->elemento1 == e1 && temp->elemento2 == e2){
             return true;
         }
@@ -196,26 +196,26 @@ bool Relacion1a1<T,S>::existeRelacion(T e1, S e2) {
 template <typename T, typename S>
 S Relacion1a1<T,S>::imagen(T e) {
     Elem<T,S> *temp = primero;
-    while(temp != NULL && temp->elemento1 != e){
+    while(temp != 0 && temp->elemento1 != e){
         temp = temp->sgt;
     }
     if(temp->elemento1 == e){
         return temp->elemento2;
     } else{
-        return NULL;
+        return 0;
     }
 }
 
 template <typename T, typename S>
 T Relacion1a1<T,S>::preImagen(S e) {
     Elem<T,S> *temp = primero;
-    while(temp != NULL && temp->elemento2 != e){
+    while(temp != 0 && temp->elemento2 != e){
         temp = temp->sgt;
     }
     if(temp->elemento2 == e){
         return temp->elemento1;
     } else{
-        return NULL;
+        return 0;
     }
 }
 
@@ -223,7 +223,7 @@ template <typename T, typename S>
 bool Relacion1a1<T,S>::estaEnDominio(T e) {
     Elem<T,S> *temp = primero;
     bool existe = false;
-    while(temp != NULL && !existe){
+    while(temp != 0 && !existe){
         if(temp->elemento1 == e){
             existe = true;
         } else {
@@ -237,7 +237,7 @@ template <typename T, typename S>
 bool Relacion1a1<T,S>::estaEnCodominio(S e) {
     Elem<T,S> *temp = primero;
     bool existe = false;
-    while(temp != NULL && !existe){
+    while(temp != 0 && !existe){
         if(temp->elemento2 == e){
             existe = true;
         } else {
@@ -255,7 +255,7 @@ int Relacion1a1<T,S>::numRelaciones() {
 template <typename T, typename S>
 void Relacion1a1<T,S>::listar() {
     Elem<T,S> *aux = primero;
-    while(aux != NULL) {
+    while(aux != 0) {
         cout << aux->elemento1 << "-" << aux->elemento2 << endl;
         aux = aux->sgt;
     }

@@ -17,15 +17,15 @@ struct Vertice{
     int numVrtAdy;
     Vertice(){
         etiqueta = "";
-        sgt = NULL;
-        ady = NULL;
+        sgt = 0;
+        ady = 0;
         numVrtAdy =0;
     };
 
     Vertice(string e){
         etiqueta = e;
-        sgt = NULL;
-        ady = NULL;
+        sgt = 0;
+        ady = 0;
         numVrtAdy = 0;
     };
 
@@ -37,14 +37,14 @@ struct Arista{
     int peso;
 
     Arista(){
-        destino = NULL;
-        sgt = NULL;
+        destino = 0;
+        sgt = 0;
         peso = -1;
     };
 
     Arista(int p){
-        destino = NULL;
-        sgt = NULL;
+        destino = 0;
+        sgt = 0;
         peso = p;
     }
 };

@@ -9,11 +9,13 @@ void Algoritmos::profundidadPrimero(grafo g) {
     if(!g.vacio()){
         dvv.crear();
         vert v = g.primerVertice();
-        while(v != NULL){
+        int num = 1;
+        while(v != 0 && num <= g.numVertices()){
             if(!dvv.pertenece(v)) {
                 profPrimeroRec(g, v);
             }
             v = g.sgtVertice(v);
+            num++;
         }
         dvv.destruir();
         cout << "FIN" << endl;
@@ -23,12 +25,15 @@ void Algoritmos::profundidadPrimero(grafo g) {
 void Algoritmos::profPrimeroRec(grafo g, vert v) {
     dvv.agregar(v);
     cout << g.etiqueta(v) << " -> ";
+    int tam = g.numVertices();
+    int num = 0;
     vert va = g.primerVrtAdy(v);
-    while(va != NULL){
+    while(va != 0 && num < tam){
         if(!dvv.pertenece(va)){
             profPrimeroRec(g,va);
         }
         va = g.sgtVrtAdy(v, va);
+        num++;
     }
 }
 
@@ -36,7 +41,8 @@ void Algoritmos::dijkstra(grafo& g, vert o) {
     distanciaR.crear();
     int n = g.numVertices();
     vert v = g.primerVertice();
-    while(v != NULL){
+    int num = 1;
+    while(v != 0 && num < n){
         if(v != o){
             if(g.existeArista(o,v)){
                 distanciaR.agregarRelacion(v,g.peso(o,v));
@@ -44,17 +50,18 @@ void Algoritmos::dijkstra(grafo& g, vert o) {
                 distanciaR.agregarRelacion(v,999);
             }
         }
+        num++;
         v = g.sgtVertice(v);
     }
     for(int i = 0; i< n;i++){
-        previo[i] = NULL;
+        previo[i] = 0;
     }
 
     vert listVrt[n+1];
     listVrt[1] = o;
     int cont = 2;
     v = g.primerVertice();
-    while(v != NULL){
+    while(v != 0){
         if(v != o){
             listVrt[cont] = v;
             cont++;
@@ -71,7 +78,7 @@ void Algoritmos::dijkstra(grafo& g, vert o) {
         vert menor = minimo(g, o, dvv.numElem()+1);
         dvv.agregar(menor);
         vert w = g.primerVrtAdy(menor);
-        while(w != NULL){
+        while(w != 0){
             if(distanciaR.imagen(w) > distanciaR.imagen(menor) + g.peso(menor,w)){
                 distanciaR.modificarImagen(w, (distanciaR.imagen(menor) + g.peso(menor,w)));
                 previo[pos] = menor;
@@ -95,7 +102,7 @@ void Algoritmos::dijkstra(grafo& g, vert o) {
                 cont = std::stoi(g.etiqueta(previo[cont]));
             }
         }
-        cout << "Etiqueta: " << listVrt[i]->etiqueta << ". Distancia: " << distanciaR.imagen(listVrt[i]) << ". Camino: "
+        cout << "Etiqueta: " << /*listVrt[i]->etiqueta*/ g.etiqueta(listVrt[i]) << ". Distancia: " << distanciaR.imagen(listVrt[i]) << ". Camino: "
              << g.etiqueta(listVrt[i]) << "<-" << camino << g.etiqueta(o) << endl;
     }
     dvv.destruir();
@@ -103,10 +110,10 @@ void Algoritmos::dijkstra(grafo& g, vert o) {
 }
 
 vert Algoritmos::minimo(grafo g , vert o, int i) {
-    vert menor = NULL;
+    vert menor = 0;
     int min = 999;
     vert w = g.primerVertice();
-    while(w != NULL){
+    while(w != 0){
         if(w != o){
             if(!dvv.pertenece(w) && distanciaR.imagen(w) < min){
                 min = distanciaR.imagen(w);
@@ -180,9 +187,9 @@ bool Algoritmos::iguales(grafo &g1, grafo &g2) {
     } else{
         relacion1a1.crear();
         vert v1 = g1.primerVertice();
-        while(v1 != NULL && sonIguales){
+        while(v1 != 0 && sonIguales){
             vert v2 = g2.traduceVrt(g1.etiqueta(v1));
-            if(v2 != NULL){
+            if(v2 != 0){
                 if(g1.numVrtAdyacentes(v1) == g2.numVrtAdyacentes(v2)){
                     relacion1a1.agregarRelacion(v1,v2);
                     v1 = g1.sgtVertice(v1);
@@ -197,9 +204,9 @@ bool Algoritmos::iguales(grafo &g1, grafo &g2) {
         }
         if(sonIguales){
             v1 = g1.primerVertice();
-            while(v1 != NULL && sonIguales){
+            while(v1 != 0 && sonIguales){
                 vert va1 = g1.primerVrtAdy(v1);
-                while(va1 != NULL && sonIguales){
+                while(va1 != 0 && sonIguales){
                     if(g2.existeArista(relacion1a1.imagen(v1), relacion1a1.imagen(va1))) {
                         if (g1.peso(v1, va1) != g2.peso(relacion1a1.imagen(v1), relacion1a1.imagen(va1))) {
                             sonIguales = false;
@@ -223,19 +230,19 @@ grafo Algoritmos::copiarGrafo(grafo& g1) {
     g2.crear();
     relacion1a1.crear();
     vert v1 = g1.primerVertice();
-    while(v1 != NULL){
+    while(v1 != 0){
         vert ad = g1.primerVrtAdy(v1);
         g2.agregarVertice(g1.etiqueta(v1));
-        while(ad != NULL){
+        while(ad != 0){
             relacion1a1.agregarRelacion(v1,ad);
             ad = g1.sgtVrtAdy(v1,ad);
         }
         v1 = g1.sgtVertice(v1);
     }
     v1 = g1.primerVertice();
-    while(v1 != NULL){
+    while(v1 != 0){
         vert aux = g1.primerVertice();
-        while(aux != NULL) {
+        while(aux != 0) {
             if (relacion1a1.existeRelacion(v1, aux)) {
                 g2.agregarArista(g2.traduceVrt(g2.etiqueta(v1)), g2.traduceVrt(g1.etiqueta(aux)), g1.peso(v1, aux));
             }
@@ -246,9 +253,9 @@ grafo Algoritmos::copiarGrafo(grafo& g1) {
     return g2;
 }
 
-void Algoritmos::eliminarVertNoAislado(grafo& g, vertice v) {
+void Algoritmos::eliminarVertNoAislado(grafo& g, vert v) {
     vert aux = g.primerVertice();
-    while(aux != NULL){
+    while(aux != 0){
         if(aux != v){
             if(g.existeArista(aux,v)){
                 g.eliminarArista(aux,v);
@@ -256,24 +263,25 @@ void Algoritmos::eliminarVertNoAislado(grafo& g, vertice v) {
         }
         aux = g.sgtVertice(aux);
     }
-    adyacente ad = v->ady;
-    while(ad != NULL){
-        g.eliminarArista(v,ad->destino);
-        ad = ad->sgt;
+    vert ad = g.primerVrtAdy(v);
+    //adyacente ad = v->ady;
+    while(ad != 0){
+        g.eliminarArista(v,ad);
+        ad = g.sgtVrtAdy(v,ad);
     }
     g.eliminarVertice(v);
 }
 
 void Algoritmos::hamilton(gnd &g) {
     int n = g.numVertices();
-    vert* ruta = new vertice[n];
+    vert* ruta = new vert[n];
     dvv.crear();
     numSolFact = 0;
     solOPtima = 999; //simula INF
     dvv.agregar(g.primerVertice());
     vert* rutaAct = hamiltonRec(g,g.primerVertice(), 0, ruta);
     delete[] ruta;
-    if(rutaAct != NULL){
+    if(rutaAct != 0){
         cout << g.etiqueta(g.primerVertice()) << "->";
         for (int i = 0; i < n - 1; i++) {
             cout << g.etiqueta(rutaAct[i]) << "->";
@@ -287,7 +295,7 @@ void Algoritmos::hamilton(gnd &g) {
     dvv.destruir();
 }
 
-vert* Algoritmos::hamiltonRec(gnd &g, vertice v, int peso, vertice* ruta) {
+vert* Algoritmos::hamiltonRec(gnd &g, vert v, int peso, vert* ruta) {
     vert* solucion = 0;
     if (dvv.numElem() == g.numVertices()) {
         if (!g.existeArista(v, g.primerVertice())) {
@@ -297,7 +305,7 @@ vert* Algoritmos::hamiltonRec(gnd &g, vertice v, int peso, vertice* ruta) {
             numSolFact++;
             if (peso < solOPtima) {
                 const int n = g.numVertices();
-                solucion = new vertice[n];
+                solucion = new vert[n];
                 solOPtima = peso;
                 for (int i = 0; i < n - 1; i++) {
                     solucion[i] = ruta[i];
@@ -373,7 +381,7 @@ void Algoritmos::prim(gnd &g) {
     }
 
     aristasPesos[0] = 0;
-    camino[0] = NULL;
+    camino[0] = 0;
     caminoInd[0] = -1;
     int minimo;
 
@@ -393,7 +401,7 @@ void Algoritmos::prim(gnd &g) {
 
     printf("Edge   Weight\n");
     for (int i = 1; i < tamano; i++) {
-        cout<<camino[i]->etiqueta<<"   -" <<i<<"  "<<pesos[i][caminoInd[i]]<<endl;
+        cout<< /*camino[i]->etiqueta */ g.etiqueta(camino[i])<<"   -" <<i<<"  "<<pesos[i][caminoInd[i]]<<endl;
         //printf("%s - %d    %d \n", camino[i]->etiqueta, i, pesos[i][caminoInd[i]]);
     }
 }
