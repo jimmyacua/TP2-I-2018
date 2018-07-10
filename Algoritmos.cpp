@@ -8,7 +8,7 @@
 void Algoritmos::profundidadPrimero(grafo g) {
     if(!g.vacio()){
         dvv.crear();
-        vertice v = g.primerVertice();
+        vert v = g.primerVertice();
         while(v != NULL){
             if(!dvv.pertenece(v)) {
                 profPrimeroRec(g, v);
@@ -20,10 +20,10 @@ void Algoritmos::profundidadPrimero(grafo g) {
     }
 }
 
-void Algoritmos::profPrimeroRec(grafo g, vertice v) {
+void Algoritmos::profPrimeroRec(grafo g, vert v) {
     dvv.agregar(v);
     cout << g.etiqueta(v) << " -> ";
-    vertice va = g.primerVrtAdy(v);
+    vert va = g.primerVrtAdy(v);
     while(va != NULL){
         if(!dvv.pertenece(va)){
             profPrimeroRec(g,va);
@@ -32,7 +32,7 @@ void Algoritmos::profPrimeroRec(grafo g, vertice v) {
     }
 }
 
-void Algoritmos::dijkstra(grafo& g, vertice o) {
+void Algoritmos::dijkstra(grafo& g, vert o) {
     distanciaR.crear();
     int n = g.numVertices();
     vert v = g.primerVertice();
@@ -123,9 +123,9 @@ void Algoritmos::floyd(grafo& g) {
     int tamano = g.numVertices();
     int pesos[tamano][tamano];
     string caminos[tamano][tamano];
-    vertice indice = g.primerVertice();
+    vert indice = g.primerVertice();
     for (int i = 0; i < tamano; i++) {
-        vertice comp = g.primerVertice();
+        vert comp = g.primerVertice();
         for (int j = 0; j < tamano; j++) {
             caminos[j][i] = g.etiqueta(indice);
             if (g.existeArista(indice, comp)) {
@@ -179,9 +179,9 @@ bool Algoritmos::iguales(grafo &g1, grafo &g2) {
         sonIguales = false;
     } else{
         relacion1a1.crear();
-        vertice v1 = g1.primerVertice();
+        vert v1 = g1.primerVertice();
         while(v1 != NULL && sonIguales){
-            vertice v2 = g2.traduceVrt(g1.etiqueta(v1));
+            vert v2 = g2.traduceVrt(g1.etiqueta(v1));
             if(v2 != NULL){
                 if(g1.numVrtAdyacentes(v1) == g2.numVrtAdyacentes(v2)){
                     relacion1a1.agregarRelacion(v1,v2);
@@ -198,7 +198,7 @@ bool Algoritmos::iguales(grafo &g1, grafo &g2) {
         if(sonIguales){
             v1 = g1.primerVertice();
             while(v1 != NULL && sonIguales){
-                vertice va1 = g1.primerVrtAdy(v1);
+                vert va1 = g1.primerVrtAdy(v1);
                 while(va1 != NULL && sonIguales){
                     if(g2.existeArista(relacion1a1.imagen(v1), relacion1a1.imagen(va1))) {
                         if (g1.peso(v1, va1) != g2.peso(relacion1a1.imagen(v1), relacion1a1.imagen(va1))) {
@@ -222,9 +222,9 @@ grafo Algoritmos::copiarGrafo(grafo& g1) {
     grafo g2;
     g2.crear();
     relacion1a1.crear();
-    vertice v1 = g1.primerVertice();
+    vert v1 = g1.primerVertice();
     while(v1 != NULL){
-        vertice ad = g1.primerVrtAdy(v1);
+        vert ad = g1.primerVrtAdy(v1);
         g2.agregarVertice(g1.etiqueta(v1));
         while(ad != NULL){
             relacion1a1.agregarRelacion(v1,ad);
@@ -234,7 +234,7 @@ grafo Algoritmos::copiarGrafo(grafo& g1) {
     }
     v1 = g1.primerVertice();
     while(v1 != NULL){
-        vertice aux = g1.primerVertice();
+        vert aux = g1.primerVertice();
         while(aux != NULL) {
             if (relacion1a1.existeRelacion(v1, aux)) {
                 g2.agregarArista(g2.traduceVrt(g2.etiqueta(v1)), g2.traduceVrt(g1.etiqueta(aux)), g1.peso(v1, aux));
@@ -247,7 +247,7 @@ grafo Algoritmos::copiarGrafo(grafo& g1) {
 }
 
 void Algoritmos::eliminarVertNoAislado(grafo& g, vertice v) {
-    vertice aux = g.primerVertice();
+    vert aux = g.primerVertice();
     while(aux != NULL){
         if(aux != v){
             if(g.existeArista(aux,v)){
@@ -266,12 +266,12 @@ void Algoritmos::eliminarVertNoAislado(grafo& g, vertice v) {
 
 void Algoritmos::hamilton(gnd &g) {
     int n = g.numVertices();
-    vertice* ruta = new vertice[n];
+    vert* ruta = new vertice[n];
     dvv.crear();
     numSolFact = 0;
     solOPtima = 999; //simula INF
     dvv.agregar(g.primerVertice());
-    vertice* rutaAct = hamiltonRec(g,g.primerVertice(), 0, ruta);
+    vert* rutaAct = hamiltonRec(g,g.primerVertice(), 0, ruta);
     delete[] ruta;
     if(rutaAct != NULL){
         cout << g.etiqueta(g.primerVertice()) << "->";
@@ -287,8 +287,8 @@ void Algoritmos::hamilton(gnd &g) {
     dvv.destruir();
 }
 
-vertice* Algoritmos::hamiltonRec(gnd &g, vertice v, int peso, vertice* ruta) {
-    vertice* solucion = 0;
+vert* Algoritmos::hamiltonRec(gnd &g, vertice v, int peso, vertice* ruta) {
+    vert* solucion = 0;
     if (dvv.numElem() == g.numVertices()) {
         if (!g.existeArista(v, g.primerVertice())) {
             return 0;
@@ -307,13 +307,13 @@ vertice* Algoritmos::hamiltonRec(gnd &g, vertice v, int peso, vertice* ruta) {
             return solucion;
         }
     }
-    vertice ady = g.primerVrtAdy(v);
+    vert ady = g.primerVrtAdy(v);
     while (ady != 0) {
         if (!dvv.pertenece(ady)) {
             dvv.agregar(ady);
             peso += g.peso(v, ady);
             ruta[dvv.numElem() - 2] = ady;
-            vertice* solP = hamiltonRec(g, ady, peso, ruta);
+            vert* solP = hamiltonRec(g, ady, peso, ruta);
             if (solP != 0) {
                 if (solucion != 0) {
                     delete[] solucion;
@@ -343,9 +343,9 @@ int Algoritmos::menorArista(int aristas[], bool visitados[], int tam) {
 void Algoritmos::prim(gnd &g) {
     int tamano = g.numVertices();
     int pesos[tamano][tamano];
-    vertice vertices[tamano];
-    vertice comp;
-    vertice indice = g.primerVertice();
+    vert vertices[tamano];
+    vert comp;
+    vert indice = g.primerVertice();
     //Hace una matriz de adyacencia con los pesos
     for (int i = 0; i < tamano; i++) {
         comp = g.primerVertice();
@@ -363,7 +363,7 @@ void Algoritmos::prim(gnd &g) {
 
     int aristasPesos[tamano];
     bool visitados[tamano];
-    vertice camino[tamano];
+    vert camino[tamano];
     int caminoInd[tamano];
 
     //Rellena los pesos y los visitados
