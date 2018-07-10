@@ -384,16 +384,18 @@ void Algoritmos::prim(gnd &g) {
     camino[0] = 0;
     caminoInd[0] = -1;
     int minimo;
-
+    int cont = 0;
     for (int j = 0; j < tamano - 1; j++) {
         minimo = menorArista(aristasPesos, visitados, tamano);
         visitados[minimo] = true;
+        cont = 0;
         for (int i = 0; i < tamano; i++) {
             if ((pesos[minimo][i]>0) && (visitados[i] == false) && (pesos[minimo][i]<aristasPesos[i])) {
+                relacion1a1.agregarRelacion(vertices[minimo],vertices[i]);
                 camino[i] = vertices[minimo];
+                gemelo[i] = vertices[i];
                 caminoInd[i] = minimo;
                 aristasPesos[i] = pesos[minimo][i];
-
             }
         }
 

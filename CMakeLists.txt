@@ -3,5 +3,7 @@ project(TP2-I-2018)
 
 set(CMAKE_CXX_STANDARD 11)
 
+
 add_executable(TP2-I-2018 main.cpp ListaIndexadaLSE.h GrafoNODirigido.h GrafoNODirigido.cpp Diccionario.cpp Diccionario.h Relacion1a1.h GrafoDirigListAdy.cpp GrafoDirigListAdy.h Algoritmos.cpp Algoritmos.h)
+
 
