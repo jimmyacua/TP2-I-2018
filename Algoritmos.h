@@ -63,7 +63,6 @@ public:
     //MOD: -
     void hamilton(gnd& g);
 
-
     //EFE: encuentra el arbol de minimo costo del grafo g
     //REQ: Grafo NO Dirigido inicializado y no vacio
     //MOD: -

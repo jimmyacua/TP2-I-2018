@@ -49,7 +49,7 @@ int main(){
     copia.crear();
 
     Algoritmos algoritmos;
-
+  
     bool continuar = true;
     while (continuar) {
         int desicion;

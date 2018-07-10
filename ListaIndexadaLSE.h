@@ -8,14 +8,14 @@
 #include <string>
 using namespace std;
 
-struct Caja{
+struct Cajaa{
 public:
     string elemento;
-    Caja* sgt;
-    Caja(){
+    Cajaa* sgt;
+    Cajaa(){
         sgt = nullptr;
     }
-    Caja(string elmt){
+    Cajaa(string elmt){
         elemento = elmt;
         sgt = nullptr;
     }
@@ -71,8 +71,8 @@ public:
 
 
 private:
-    Caja *primero;
-    Caja *ultimo;
+    Cajaa *primero;
+    Cajaa *ultimo;
     int cantElem;
 };
 
