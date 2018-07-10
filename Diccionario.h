@@ -7,7 +7,9 @@
 
 #include "GrafoDirigListAdy.h"
 //#include "GrafoMatriz.h"
+
 typedef vertice elemento;
+//typedef int elemento;
 
 struct Caja{
 public:

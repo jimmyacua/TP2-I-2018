@@ -86,5 +86,5 @@ int GrafoNODirigido::numVertices() {
 }
 
 int GrafoNODirigido::numVrtAdyacentes(vert v) {
-    return v->numVrtAdy;
+    return g.numVrtAdyacentes(v);
 }

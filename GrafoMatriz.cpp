@@ -34,7 +34,7 @@ bool GrafoMatriz::vacio() {
     }
 }
 
-vertice GrafoMatriz::agregarVertice(string etiqueta) {
+vertex GrafoMatriz::agregarVertice(string etiqueta) {
         lista.insertar(etiqueta,ultimoLleno+1);
         cantVertices++;
         ultimoLleno++;
@@ -43,7 +43,7 @@ vertice GrafoMatriz::agregarVertice(string etiqueta) {
         }
 }
 
-void GrafoMatriz::eliminarVertice(vertice indice) {
+void GrafoMatriz::eliminarVertice(vertex indice) {
     lista.borrar(indice);
     for(int i = indice; i < ultimoLleno; i++){
         for(int j = 1; j = ultimoLleno; j++){
@@ -54,42 +54,42 @@ void GrafoMatriz::eliminarVertice(vertice indice) {
     cantVertices--;
 }
 
-void GrafoMatriz::modificarEtiqueta(vertice indice, string etiqueta) {
+void GrafoMatriz::modificarEtiqueta(vertex indice, string etiqueta) {
     lista.modificarElem(etiqueta,indice);
 }
 
-string GrafoMatriz::etiqueta(vertice indice) {
+string GrafoMatriz::etiqueta(vertex indice) {
     return lista.recuperar(indice);
 }
 
-void GrafoMatriz::agregarArista(vertice indiceP, vertice indiceS, int peso) {
+void GrafoMatriz::agregarArista(vertex indiceP, vertex indiceS, int peso) {
         matrizAdyacencia[indiceP-1][indiceS-1] = peso;
         cantAristas++;
 }
 
-void GrafoMatriz::eliminarArista(vertice indiceP, vertice indiceS) {
+void GrafoMatriz::eliminarArista(vertex indiceP, vertex indiceS) {
     matrizAdyacencia[indiceP-1][indiceS-1]=0;
     cantAristas--;
 }
 
-void GrafoMatriz::modificarPeso(vertice indiceP, vertice indiceS, int peso) {
+void GrafoMatriz::modificarPeso(vertex indiceP, vertex indiceS, int peso) {
     matrizAdyacencia[indiceP-1][indiceS-1] = peso;
 }
 
-int GrafoMatriz::peso(vertice indiceP, vertice indiceS) {
+int GrafoMatriz::peso(vertex indiceP, vertex indiceS) {
     int p = matrizAdyacencia[indiceP-1][indiceS-1];
     return matrizAdyacencia[indiceP-1][indiceS-1];
 }
 
-vertice GrafoMatriz::primerVertice() {
+vertex GrafoMatriz::primerVertice() {
     return 1;
 }
 
-vertice GrafoMatriz::sgtVertice(vertice indice) {
+vertex GrafoMatriz::sgtVertice(vertex indice) {
     return indice+1;
 }
 
-bool GrafoMatriz::existeArista(vertice indiceP, vertice indiceS) {
+bool GrafoMatriz::existeArista(vertex indiceP, vertex indiceS) {
     if(matrizAdyacencia[indiceP-1][indiceS-1]>0){
         return true;
     } else{
@@ -97,10 +97,10 @@ bool GrafoMatriz::existeArista(vertice indiceP, vertice indiceS) {
     }
 }
 
-vertice GrafoMatriz::primerVrtAdy(vertice indice) {
+vertex GrafoMatriz::primerVrtAdy(vertex indice) {
     bool terminado = false;
     int contador = 1;
-    vertice primerAdy;
+    vertex primerAdy;
     while(!terminado){
         if(matrizAdyacencia[indice][contador]>0){
             terminado = true;
@@ -111,10 +111,10 @@ vertice GrafoMatriz::primerVrtAdy(vertice indice) {
     return primerAdy;
 }
 
-vertice GrafoMatriz::sgtVrtAdy(vertice indiceP, vertice indiceS) {
+vertex GrafoMatriz::sgtVrtAdy(vertex indiceP, vertex indiceS) {
     bool terminado = false;
     int contador = indiceS+1;
-    vertice siguienteAdy;
+    vertex siguienteAdy;
     while(!terminado){
         if(matrizAdyacencia[indiceP][contador]>0){
             terminado = true;
@@ -133,13 +133,24 @@ int GrafoMatriz::numAristas() {
     return cantAristas;
 }
 
+int GrafoMatriz::numVrtAdyacentes(vertex v) {
+    int numAdya = 0;
+    int indice = 1;
+    while(indice< cantVertices){
+        if(matrizAdyacencia[v][indice] > 0){
+            numAdya++;
+        }
+        indice++;
+    }
+    return numAdya;
+}
 void GrafoMatriz::mostrar() {
     lista.listar();
 }
 
-vertice GrafoMatriz::traduceVrt(string e){
-    vertice indice = primerVertice();
-    vertice resultado;
+vertex GrafoMatriz::traduceVrt(string e){
+    vertex indice = primerVertice();
+    vertex resultado;
     bool encontrado = false;
     while(indice <= ultimoLleno && !encontrado){
         if(etiqueta(indice)==e){

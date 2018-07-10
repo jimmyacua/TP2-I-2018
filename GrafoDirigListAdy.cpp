@@ -5,7 +5,7 @@
 #include "GrafoDirigListAdy.h"
 
 void ListaAdyacencia::crear() {
-    cabeza = NULL;
+    cabeza = 0;
     nVertices = 0;
 }
 
@@ -14,8 +14,8 @@ void ListaAdyacencia::destruir() {
     vertice anterior;
     adyacente ad = temp->ady;
     adyacente antAdy;
-    while(temp != NULL){
-        while(ad != NULL){
+    while(temp != 0){
+        while(ad != 0){
             antAdy = ad;
             ad = ad->sgt;
             delete antAdy;
@@ -31,8 +31,8 @@ void ListaAdyacencia::vaciar() {
     vertice anterior;
     adyacente ad = temp->ady;
     adyacente antAdy;
-    while(temp != NULL){
-        while(ad != NULL){
+    while(temp != 0){
+        while(ad != 0){
             antAdy = ad;
             ad = ad->sgt;
             delete antAdy;
@@ -41,7 +41,7 @@ void ListaAdyacencia::vaciar() {
         temp = temp->sgt;
         delete anterior;
     }
-    cabeza = NULL;
+    cabeza = 0;
     nVertices = 0;
 }
 
@@ -55,7 +55,7 @@ bool ListaAdyacencia::vacio() {
 
 vertice ListaAdyacencia::agregarVertice(string e) {
     vertice nuevo = new Vertice(e);
-    if(cabeza == NULL){
+    if(cabeza == 0){
         cabeza = nuevo;
     } else{
         nuevo->sgt = cabeza;
@@ -67,12 +67,12 @@ vertice ListaAdyacencia::agregarVertice(string e) {
 
 void ListaAdyacencia::eliminarVertice(vertice v) {
     vertice aux = cabeza;
-    vertice anterior = NULL;
-    while(aux != NULL && aux != v){
+    vertice anterior = 0;
+    while(aux != 0 && aux != v){
         anterior = aux;
         aux = aux->sgt;
     }
-    if(anterior == NULL){
+    if(anterior == 0){
         cabeza = cabeza->sgt;
         delete aux;
         nVertices--;
@@ -93,12 +93,12 @@ string ListaAdyacencia::etiqueta(vertice v) {
 
 void ListaAdyacencia::agregarArista(vertice v1, vertice v2, int p) {
     adyacente aris = new Arista(p);
-    if(v1->ady == NULL) { //si es el primer adyacente que se agrega
+    if(v1->ady == 0) { //si es el primer adyacente que se agrega
         v1->ady = aris;
         aris->destino = v2;
     } else{
         adyacente aux = v1->ady;
-        while(aux->sgt != NULL){
+        while(aux->sgt != 0){
             aux = aux->sgt;
         }
         aris->destino = v2;
@@ -110,12 +110,12 @@ void ListaAdyacencia::agregarArista(vertice v1, vertice v2, int p) {
 
 void ListaAdyacencia::eliminarArista(vertice v1, vertice v2) {
     adyacente aux = v1->ady;
-    adyacente anterior = NULL;
+    adyacente anterior = 0;
     while(aux->destino != v2){
         anterior = aux;
         aux = aux->sgt;
     }
-    if(anterior == NULL){
+    if(anterior == 0){
         v1->ady = v1->ady->sgt;
         delete aux;
     } else{
@@ -146,30 +146,30 @@ vertice ListaAdyacencia::primerVertice() {
 }
 
 vertice ListaAdyacencia::sgtVertice(vertice v) {
-    if(v->sgt != NULL){
+    if(v->sgt != 0){
         return v->sgt;
     } else{
-        return NULL;
+        return 0;
     }
 }
 
 vertice ListaAdyacencia::primerVrtAdy(vertice v) {
-    if(v->ady != NULL){
+    if(v->ady != 0){
         return v->ady->destino;
     } else{
-        return NULL;
+        return 0;
     }
 }
 
 vertice ListaAdyacencia::sgtVrtAdy(vertice v, vertice ad) {
     adyacente temp = v->ady;
-    while(temp != NULL && temp->destino != ad){
+    while(temp != 0 && temp->destino != ad){
         temp = temp->sgt;
     }
-    if(temp->sgt != NULL){
+    if(temp->sgt != 0){
         return temp->sgt->destino;
     } else {
-        return NULL;
+        return 0;
     }
 
 }
@@ -180,7 +180,7 @@ int ListaAdyacencia::numVertices() {
 
 vertice ListaAdyacencia::traduceVrt(string e) {
     vertice temp = cabeza;
-    while(temp != NULL && temp->etiqueta != e){
+    while(temp != 0 && temp->etiqueta != e){
         temp = temp->sgt;
     }
     return temp;
@@ -193,7 +193,7 @@ int ListaAdyacencia::numVrtAdyacentes(vertice v) {
 bool ListaAdyacencia::existeArista(vertice v1, vertice v2) {
     adyacente ad = v1->ady;
     bool existe = false;
-    while(ad != NULL && !existe){
+    while(ad != 0 && !existe){
         if(ad->destino == v2){
             existe = true;
         } else{
