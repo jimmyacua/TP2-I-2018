@@ -106,8 +106,8 @@ void Algoritmos::dijkstra(grafo& g, vertice o) {
             }
             cont = a;
         }
-            cout << "Etiqueta: " << listVrt[i]->etiqueta << ". Distancia: " << distancia[i] << ". Camino: "
-                 << g.etiqueta(listVrt[i]) << "<-" << camino << g.etiqueta(o) << endl;
+        cout << "Etiqueta: " << listVrt[i]->etiqueta << ". Distancia: " << distancia[i] << ". Camino: "
+             << g.etiqueta(listVrt[i]) << "<-" << camino << g.etiqueta(o) << endl;
     }
 }
 
