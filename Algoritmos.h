@@ -28,12 +28,6 @@ typedef GrafoNODirigido gnd;
 class Algoritmos {
 public:
 
-    struct cmp {
-        bool operator()(const Node &a, const Node &b) { //retorna el menor entre a y b (para Dijkstra)
-            return a.second > b.second;
-        }
-    };
-
     //EFE: Devuelve el camino más corto desde el vertice de origen a cualquier otro vertice
     //REQ: Grafo Dirigido inicializado y no vacio, vertice de origen valido
     //MOD: -
@@ -81,19 +75,19 @@ private:
 
     int menorArista(int aristas[],bool visitados[],int tam);
 
-    void menor(vert actual, int pos, vert ad,int posAd,  int peso);
 
     vertice* hamiltonRec(gnd& g, vert v, int peso, vert*);
+    vert minimo(grafo, vert, int);
 
     int solOPtima;
     int numSolFact;
 
-    int distancia[20];
-    vertice previo[20];
-
-    priority_queue<Node, vector<Node>, cmp> Q; //lista de prioridad(para Dijkstra)
+    vert previo[20];
     Diccionario dvv;
-    Relacion1a1<vertice,vertice>  relacion1a1;
+    Relacion1a1<vert,vert>  relacion1a1;
+    Relacion1a1<vert, int> distanciaR;
+
+
 };
 
 

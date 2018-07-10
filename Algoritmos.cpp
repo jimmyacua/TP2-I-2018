@@ -33,82 +33,90 @@ void Algoritmos::profPrimeroRec(grafo g, vertice v) {
 }
 
 void Algoritmos::dijkstra(grafo& g, vertice o) {
-    int size = g.numVertices();
-    Relacion1a1<vertice, int> par;
-    int INF = 99999;
-    //int distancia[size];
-    bool visitado[size];
-    //vertice previo[size];
-    vertice listVrt[size];
-    vertice v = g.primerVertice();
+    distanciaR.crear();
+    int n = g.numVertices();
+    vert v = g.primerVertice();
+    while(v != NULL){
+        if(v != o){
+            if(g.existeArista(o,v)){
+                distanciaR.agregarRelacion(v,g.peso(o,v));
+            } else{
+                distanciaR.agregarRelacion(v,999);
+            }
+        }
+        v = g.sgtVertice(v);
+    }
+    for(int i = 0; i< n;i++){
+        previo[i] = NULL;
+    }
 
-    listVrt[0] = o;
-    int cont = 1;
-    vertice v1 = g.primerVertice();
-    while(v1 != NULL){
-        if(v1 != o){
-            listVrt[cont] = v1;
+    vert listVrt[n+1];
+    listVrt[1] = o;
+    int cont = 2;
+    v = g.primerVertice();
+    while(v != NULL){
+        if(v != o){
+            listVrt[cont] = v;
             cont++;
         }
-        v1 = g.sgtVertice(v1);
+        v = g.sgtVertice(v);
     }
 
-    for (int i = 0; i < size; i++) { //para inicializar los arreglos
-        distancia[i] = INF;
-        visitado[i] = false;
-        previo[i] = NULL;
-    } //fin de inicializacion
-
-    Q.push(Node(o, 0));
-    distancia[0] = 0;
-    vertice actual;
-    int peso;
-    while (!Q.empty()) {
-        actual = Q.top().first;
-        Q.pop();
-        int pos = 0;
-        while (listVrt[pos] != actual) {
-            pos++;
-        }
-        if (!visitado[pos]){
-            visitado[pos] = true;
-            vertice v = g.primerVrtAdy(actual);
-            while (v != NULL) {
-                peso = g.peso(actual,v);
-                int posV = 0;
-                vertice aux = g.primerVertice();
-                while (aux != v) {
-                    posV++;
-                    aux = g.sgtVertice(aux);
-                }
-                if (!visitado[posV]) {
-                    menor(actual, pos, v, posV, peso);
-                }
-                v = g.sgtVrtAdy(actual,v);
+    distanciaR.agregarRelacion(o,0);
+    dvv.crear();
+    dvv.agregar(o);
+    previo[1] = o;
+    int pos = 2;
+    while(dvv.numElem() != n){
+        vert menor = minimo(g, o, dvv.numElem()+1);
+        dvv.agregar(menor);
+        vert w = g.primerVrtAdy(menor);
+        while(w != NULL){
+            if(distanciaR.imagen(w) > distanciaR.imagen(menor) + g.peso(menor,w)){
+                distanciaR.modificarImagen(w, (distanciaR.imagen(menor) + g.peso(menor,w)));
+                previo[pos] = menor;
+                pos++;
             }
+            w = g.sgtVrtAdy(menor,w);
         }
     }
+
 
     cout << "Distancia desde origen (" << g.etiqueta(o) << ") a todos los vértices." << endl;
-    for(int i = 1; i< size; i++) {
+    for(int i = 1; i< n+1; i++) {
         string camino = "";
         int cont = i;
-        while (previo[cont] != o) {
-            camino = camino + g.etiqueta(previo[cont]) + "<-";
-            int a = 1;
-            vertice aux = previo[cont];
-            while(a < size && aux != listVrt[a]){
-                if(listVrt[a] != previo[cont]){
-                    a++;
-                } else{
-                    a = size;
-                }
+        bool listo = false;
+        while(!listo && cont < n+1){
+            if(std::stoi(g.etiqueta(previo[cont])) == cont){
+                listo = true;
+            } else{
+                camino = camino + g.etiqueta(previo[cont]) + "<-";
+                cont = std::stoi(g.etiqueta(previo[cont]));
             }
-            cont = a;
         }
-        cout << "Etiqueta: " << listVrt[i]->etiqueta << ". Distancia: " << distancia[i] << ". Camino: "
+        cout << "Etiqueta: " << listVrt[i]->etiqueta << ". Distancia: " << distanciaR.imagen(listVrt[i]) << ". Camino: "
              << g.etiqueta(listVrt[i]) << "<-" << camino << g.etiqueta(o) << endl;
     }
+    dvv.destruir();
+    distanciaR.destruir();
+}
+
+vert Algoritmos::minimo(grafo g , vert o, int i) {
+    vert menor = NULL;
+    int min = 999;
+    vert w = g.primerVertice();
+    while(w != NULL){
+        if(w != o){
+            if(!dvv.pertenece(w) && distanciaR.imagen(w) < min){
+                min = distanciaR.imagen(w);
+                menor = w;
+            }
+        }
+        w = g.sgtVertice(w);
+    }
+
+    return menor;
 }
 
 void Algoritmos::floyd(grafo& g) {
@@ -162,14 +170,6 @@ void Algoritmos::floyd(grafo& g) {
             //printf ("%7d", caminos[i][j]);
         }
         printf("\n");
-    }
-}
-
-void Algoritmos::menor(vertice actual, int pos, vertice ad, int posAd ,int peso) {
-    if(distancia[pos]+peso < distancia[posAd]){
-        distancia[posAd] = peso;
-        previo[posAd] = actual;
-        Q.push(Node(ad,distancia[posAd]));
     }
 }
 
