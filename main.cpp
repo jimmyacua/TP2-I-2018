@@ -459,10 +459,7 @@ int main(){
                     cin >> op;
                     switch (op) {
                         case 1: {
-                            string v;
-                            cout << "Digite el vertice de origen" << endl;
-                            cin >> v;
-                            algoritmos.dijkstra(GD, GD.traduceVrt(v));
+                            algoritmos.dijkstra(GD, GD.primerVertice());
                         }
                             break;
                         case 2: {
@@ -595,7 +592,6 @@ int main(){
             break;
         }
   }
-
 
     return 0;
 }

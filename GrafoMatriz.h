@@ -2,10 +2,10 @@
 // Created by felipe on 10/06/18.
 //
 
-#ifndef TP2_GRAFOMATRIZ_H
-#define TP2_GRAFOMATRIZ_H
+#ifndef  TP2_I_2018_GRAFOMATRIZ_H
+#define  TP2_I_2018_GRAFOMATRIZ_H
 
-#endif //TP2_GRAFOMATRIZ_H
+
 
 #include "ListaIndexadaLSE.h"
 #include <string>
@@ -14,9 +14,10 @@
 using namespace std;
 
 typedef ListaIndexadaLSE listaInd;
-typedef int vertice;
+typedef int vertex;
 typedef int arista;
-class GrafoMatriz{
+
+class GrafoMatriz {
 public:
     //Efecto:
     //Requiere:
@@ -37,55 +38,55 @@ public:
     //Efecto:
     //Requiere:
     //Modifica:
-    vertice agregarVertice(string);
+    vertex agregarVertice(string);
     //Efecto:
     //Requiere:
     //Modifica:
-    void eliminarVertice(vertice);
+    void eliminarVertice(vertex);
     //Efecto:
     //Requiere:
     //Modifica:
-    void modificarEtiqueta(vertice,string);
+    void modificarEtiqueta(vertex,string);
     //Efecto:
     //Requiere:
     //Modifica:
-    string etiqueta(vertice);
+    string etiqueta(vertex);
     //Efecto:
     //Requiere:
     //Modifica:
-    void agregarArista(vertice,vertice,int);
+    void agregarArista(vertex,vertex,int);
     //Efecto:
     //Requiere:
     //Modifica:
-    void eliminarArista(vertice,vertice);
+    void eliminarArista(vertex,vertex);
     //Efecto:
     //Requiere:
     //Modifica:
-    void modificarPeso(vertice,vertice, int);
+    void modificarPeso(vertex,vertex, int);
     //Efecto:
     //Requiere:
     //Modifica:
-    int peso(vertice,vertice);
+    int peso(vertex,vertex);
     //Efecto:
     //Requiere:
     //Modifica:
-    vertice primerVertice();
+    vertex primerVertice();
     //Efecto:
     //Requiere:
     //Modifica:
-    vertice sgtVertice(vertice);
+    vertex sgtVertice(vertex);
     //Efecto:
     //Requiere:
     //Modifica:
-    bool existeArista(vertice,vertice);
+    bool existeArista(vertex,vertex);
     //Efecto:
     //Requiere:
     //Modifica:
-    vertice primerVrtAdy(vertice);
+    vertex primerVrtAdy(vertex);
     //Efecto:
     //Requiere:
     //Modifica:
-    vertice sgtVrtAdy(vertice,vertice);
+    vertex sgtVrtAdy(vertex,vertex);
     //Efecto:
     //Requiere:
     //Modifica:
@@ -97,7 +98,9 @@ public:
 
     void mostrar();
 
-    vertice traduceVrt(string);
+    vertex traduceVrt(string);
+
+    int numVrtAdyacentes(vertex);
 
 private:
     int tam = 6;
@@ -107,3 +110,5 @@ private:
     int ultimoLleno;
     listaInd lista;
 };
+
+#endif //TP2_GRAFOMATRIZ_H
