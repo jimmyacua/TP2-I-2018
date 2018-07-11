@@ -6,8 +6,8 @@
 #include "Algoritmos.h"
 #include "GrafoNODirigido.h"
 
-//typedef ListaAdyacencia gd;
-typedef GrafoMatriz gd;
+typedef ListaAdyacencia gd;
+//typedef GrafoMatriz gd;
 
 int main(){
 

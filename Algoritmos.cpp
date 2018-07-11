@@ -194,12 +194,14 @@ bool Algoritmos::iguales(grafo &g1, grafo &g2) {
     } else{
         relacion1a1.crear();
         vert v1 = g1.primerVertice();
-        while(v1 != 0 && sonIguales){
+        int n1 = 0;
+        while(v1 != 0 && n1 < g1.numVertices() && sonIguales){
             vert v2 = g2.traduceVrt(g1.etiqueta(v1));
             if(v2 != 0){
                 if(g1.numVrtAdyacentes(v1) == g2.numVrtAdyacentes(v2)){
                     relacion1a1.agregarRelacion(v1,v2);
                     v1 = g1.sgtVertice(v1);
+                    n1++;
                 }
                 else{
                     sonIguales = false;
@@ -211,20 +213,24 @@ bool Algoritmos::iguales(grafo &g1, grafo &g2) {
         }
         if(sonIguales){
             v1 = g1.primerVertice();
-            while(v1 != 0 && sonIguales){
+            n1 = 0;
+            while(v1 != 0 && n1 < g1.numVertices() && sonIguales){
                 vert va1 = g1.primerVrtAdy(v1);
-                while(va1 != 0 && sonIguales){
+                int na = 0;
+                while(va1 != 0 && na <g1.numVrtAdyacentes(v1) && sonIguales){
                     if(g2.existeArista(relacion1a1.imagen(v1), relacion1a1.imagen(va1))) {
                         if (g1.peso(v1, va1) != g2.peso(relacion1a1.imagen(v1), relacion1a1.imagen(va1))) {
                             sonIguales = false;
                         } else {
                             va1 = g1.sgtVrtAdy(v1, va1);
+                            na++;
                         }
                     } else{
                         sonIguales = false;
                     }
                 }
                 v1 = g1.sgtVertice(v1);
+                n1++;
             }
         }
         relacion1a1.destruir();
@@ -335,7 +341,8 @@ vert* Algoritmos::hamiltonRec(gnd &g, vert v, int peso, vert* ruta) {
         }
     }
     vert ady = g.primerVrtAdy(v);
-    while (ady != 0) {
+    int na = 0;
+    while (ady != 0 && na < g.numVrtAdyacentes(v)) {
         if (!dvv.pertenece(ady)) {
             dvv.agregar(ady);
             peso += g.peso(v, ady);
@@ -351,6 +358,7 @@ vert* Algoritmos::hamiltonRec(gnd &g, vert v, int peso, vert* ruta) {
             peso -= g.peso(v, ady);
         }
         ady = g.sgtVrtAdy(v, ady);
+        na++;
     }
     return solucion;
 }

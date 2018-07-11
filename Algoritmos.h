@@ -17,11 +17,11 @@
 using namespace std;
 
 
-//typedef ListaAdyacencia grafo;
-//typedef vertice vert;
+typedef ListaAdyacencia grafo;
+typedef vertice vert;
 
-typedef GrafoMatriz grafo;
-typedef int vert;
+//typedef GrafoMatriz grafo;
+//typedef int vert;
 
 typedef GrafoNODirigido gnd;
 
