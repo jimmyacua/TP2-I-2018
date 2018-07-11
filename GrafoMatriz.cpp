@@ -9,7 +9,6 @@ void GrafoMatriz::crear() {
     cantAristas = 0;
     ultimoLleno = 0;
     lista.iniciar();
-
 }
 
 void GrafoMatriz::destruir() {
@@ -20,7 +19,7 @@ void GrafoMatriz::destruir() {
 }
 
 void GrafoMatriz::vaciar() {
-    lista.vaciar();
+    lista.destruir();
     ultimoLleno = 0;
     cantVertices = 0;
     cantAristas = 0;
@@ -35,18 +34,18 @@ bool GrafoMatriz::vacio() {
 }
 
 vertex GrafoMatriz::agregarVertice(string etiqueta) {
-        lista.insertar(etiqueta,ultimoLleno+1);
         cantVertices++;
         ultimoLleno++;
-        for(int i = 0; i < tam; i++){
-            matrizAdyacencia[ultimoLleno-1][i]=0;
+        lista.insertar(etiqueta,ultimoLleno);
+        for(int i = 0; i <= tam; i++){
+            matrizAdyacencia[ultimoLleno][i]=0;
         }
 }
 
 void GrafoMatriz::eliminarVertice(vertex indice) {
     lista.borrar(indice);
-    for(int i = indice; i < ultimoLleno; i++){
-        for(int j = 1; j = ultimoLleno; j++){
+    for(int i = indice; i <= ultimoLleno; i++){
+        for(int j = 1; j <= ultimoLleno; j++){
             matrizAdyacencia[i][j] = matrizAdyacencia[i+1][j];
         }
     }
@@ -63,22 +62,22 @@ string GrafoMatriz::etiqueta(vertex indice) {
 }
 
 void GrafoMatriz::agregarArista(vertex indiceP, vertex indiceS, int peso) {
-        matrizAdyacencia[indiceP-1][indiceS-1] = peso;
+        matrizAdyacencia[indiceP][indiceS] = peso;
         cantAristas++;
 }
 
 void GrafoMatriz::eliminarArista(vertex indiceP, vertex indiceS) {
-    matrizAdyacencia[indiceP-1][indiceS-1]=0;
+    matrizAdyacencia[indiceP][indiceS]=0;
     cantAristas--;
 }
 
 void GrafoMatriz::modificarPeso(vertex indiceP, vertex indiceS, int peso) {
-    matrizAdyacencia[indiceP-1][indiceS-1] = peso;
+    matrizAdyacencia[indiceP][indiceS] = peso;
 }
 
 int GrafoMatriz::peso(vertex indiceP, vertex indiceS) {
-    int p = matrizAdyacencia[indiceP-1][indiceS-1];
-    return matrizAdyacencia[indiceP-1][indiceS-1];
+    //int p = matrizAdyacencia[indiceP][indiceS];
+    return matrizAdyacencia[indiceP][indiceS];
 }
 
 vertex GrafoMatriz::primerVertice() {
@@ -90,7 +89,7 @@ vertex GrafoMatriz::sgtVertice(vertex indice) {
 }
 
 bool GrafoMatriz::existeArista(vertex indiceP, vertex indiceS) {
-    if(matrizAdyacencia[indiceP-1][indiceS-1]>0){
+    if(matrizAdyacencia[indiceP][indiceS]>0){
         return true;
     } else{
         return false;
@@ -100,11 +99,11 @@ bool GrafoMatriz::existeArista(vertex indiceP, vertex indiceS) {
 vertex GrafoMatriz::primerVrtAdy(vertex indice) {
     bool terminado = false;
     int contador = 1;
-    vertex primerAdy;
-    while(!terminado){
-        if(matrizAdyacencia[indice][contador]>0){
+    vertex primerAdy = -1;
+    while(!terminado && contador <= numVertices()){
+        if(matrizAdyacencia[indice][contador] > 0){
             terminado = true;
-            primerAdy = matrizAdyacencia[indice][contador];
+            primerAdy = contador;
         }
         contador++;
     }
@@ -114,11 +113,11 @@ vertex GrafoMatriz::primerVrtAdy(vertex indice) {
 vertex GrafoMatriz::sgtVrtAdy(vertex indiceP, vertex indiceS) {
     bool terminado = false;
     int contador = indiceS+1;
-    vertex siguienteAdy;
-    while(!terminado){
+    vertex siguienteAdy = -1;
+    while(!terminado && contador <= numVertices()){
         if(matrizAdyacencia[indiceP][contador]>0){
             terminado = true;
-            siguienteAdy = matrizAdyacencia[indiceP][contador];
+            siguienteAdy = contador;
         }
         contador++;
     }
@@ -126,7 +125,7 @@ vertex GrafoMatriz::sgtVrtAdy(vertex indiceP, vertex indiceS) {
 }
 
 int GrafoMatriz::numVertices() {
-    return cantVertices;
+    return ultimoLleno;
 }
 
 int GrafoMatriz::numAristas() {
@@ -136,7 +135,7 @@ int GrafoMatriz::numAristas() {
 int GrafoMatriz::numVrtAdyacentes(vertex v) {
     int numAdya = 0;
     int indice = 1;
-    while(indice< cantVertices){
+    while(indice <= cantVertices){
         if(matrizAdyacencia[v][indice] > 0){
             numAdya++;
         }
@@ -150,7 +149,7 @@ void GrafoMatriz::mostrar() {
 
 vertex GrafoMatriz::traduceVrt(string e){
     vertex indice = primerVertice();
-    vertex resultado;
+    vertex resultado = -1;
     bool encontrado = false;
     while(indice <= ultimoLleno && !encontrado){
         if(etiqueta(indice)==e){
