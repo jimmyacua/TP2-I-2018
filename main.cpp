@@ -458,7 +458,7 @@ int main(){
                     cin >> op;
                     switch (op) {
                         case 1: {
-                            algoritmos.dijkstra(GD, GD.primerVertice());
+                            algoritmos.dijkstra(GD, GD.traduceVrt("1"));
                         }
                             break;
                         case 2: {

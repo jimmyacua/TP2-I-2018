@@ -62,6 +62,7 @@ vertice ListaAdyacencia::agregarVertice(string e) {
         cabeza = nuevo;
     }
     nVertices++;
+    nuevo->numVrtAdy = 0;
     return nuevo;
 }
 
@@ -187,7 +188,10 @@ vertice ListaAdyacencia::traduceVrt(string e) {
 }
 
 int ListaAdyacencia::numVrtAdyacentes(vertice v) {
-    return v->numVrtAdy;
+    if(v != 0) {
+        return v->numVrtAdy;
+    }
+    return 0;
 }
 
 bool ListaAdyacencia::existeArista(vertice v1, vertice v2) {
