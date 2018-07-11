@@ -5,14 +5,14 @@
 #ifndef TP2_I_2018_GRAFONODIRIGIDO_H
 #define TP2_I_2018_GRAFONODIRIGIDO_H
 
-//#include "GrafoDirigListAdy.h"
-#include "GrafoMatriz.h"
+#include "GrafoDirigListAdy.h"
+//#include "GrafoMatriz.h"
 
-//typedef ListaAdyacencia gd;
-//typedef vertice vert;
+typedef ListaAdyacencia gd;
+typedef vertice vert;
 
-typedef GrafoMatriz gd;
-typedef int vert;
+//typedef GrafoMatriz gd;
+//typedef int vert;
 
 
 class GrafoNODirigido {

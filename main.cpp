@@ -3,12 +3,11 @@
 //
 
 #include "Relacion1a1.h"
-//#include "GrafoDirigListAdy.h"
 #include "Algoritmos.h"
 #include "GrafoNODirigido.h"
 
-//typedef ListaAdyacencia gd;
-typedef GrafoMatriz gd;
+typedef ListaAdyacencia gd;
+//typedef GrafoMatriz gd;
 
 int main(){
 
@@ -459,7 +458,7 @@ int main(){
                     cin >> op;
                     switch (op) {
                         case 1: {
-                            algoritmos.dijkstra(GD, GD.primerVertice());
+                            algoritmos.dijkstra(GD, GD.traduceVrt("1"));
                         }
                             break;
                         case 2: {
@@ -592,6 +591,5 @@ int main(){
             break;
         }
   }
-
     return 0;
 }
