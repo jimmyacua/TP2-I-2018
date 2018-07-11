@@ -9,6 +9,7 @@ void GrafoMatriz::crear() {
     cantAristas = 0;
     ultimoLleno = 0;
     lista.iniciar();
+    matrizAdyacencia[6][6];
 
 }
 
@@ -99,12 +100,12 @@ bool GrafoMatriz::existeArista(vertex indiceP, vertex indiceS) {
 
 vertex GrafoMatriz::primerVrtAdy(vertex indice) {
     bool terminado = false;
-    int contador = 1;
+    int contador = 0;
     vertex primerAdy;
     while(!terminado){
         if(matrizAdyacencia[indice][contador]>0){
             terminado = true;
-            primerAdy = matrizAdyacencia[indice][contador];
+            primerAdy = contador;
         }
         contador++;
     }
@@ -118,7 +119,7 @@ vertex GrafoMatriz::sgtVrtAdy(vertex indiceP, vertex indiceS) {
     while(!terminado){
         if(matrizAdyacencia[indiceP][contador]>0){
             terminado = true;
-            siguienteAdy = matrizAdyacencia[indiceP][contador];
+            siguienteAdy = contador;
         }
         contador++;
     }

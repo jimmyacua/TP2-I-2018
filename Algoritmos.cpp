@@ -42,7 +42,7 @@ void Algoritmos::dijkstra(grafo& g, vert o) {
     int n = g.numVertices();
     vert v = g.primerVertice();
     int num = 1;
-    while(v != 0 && num < n){
+    while(v != 0 /*&& num < n*/){
         if(v != o){
             if(g.existeArista(o,v)){
                 distanciaR.agregarRelacion(v,g.peso(o,v));
@@ -401,8 +401,7 @@ void Algoritmos::prim(gnd &g) {
 
     printf("Edge   Weight\n");
     for (int i = 1; i < tamano; i++) {
-        cout<< /*camino[i]->etiqueta */ g.etiqueta(camino[i])<<"   -" <<i<<"  "<<pesos[i][caminoInd[i]]<<endl;
-        //printf("%s - %d    %d \n", camino[i]->etiqueta, i, pesos[i][caminoInd[i]]);
+        cout<< g.etiqueta(camino[i])<<"   -" <<i<<"  "<<pesos[i][caminoInd[i]]<<endl;
     }
 }
 

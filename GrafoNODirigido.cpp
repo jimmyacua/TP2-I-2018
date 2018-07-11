@@ -6,6 +6,7 @@
 
 void GrafoNODirigido::crear() {
     g.crear();
+    nVertices = 0;
 }
 
 void GrafoNODirigido::destruir() {
