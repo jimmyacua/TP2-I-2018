@@ -42,7 +42,7 @@ void Algoritmos::dijkstra(grafo& g, vert o) {
     int n = g.numVertices();
     vert v = g.primerVertice();
     int num = 1;
-    while(v != 0 /*&& num < n*/){
+    while(v != 0 && num < n){
         if(v != o){
             if(g.existeArista(o,v)){
                 distanciaR.agregarRelacion(v,g.peso(o,v));
@@ -371,7 +371,7 @@ void Algoritmos::prim(gnd &g) {
 
     int aristasPesos[tamano];
     bool visitados[tamano];
-    vert camino[tamano];
+    //vert camino[tamano];
     int caminoInd[tamano];
 
     //Rellena los pesos y los visitados
@@ -381,19 +381,20 @@ void Algoritmos::prim(gnd &g) {
     }
 
     aristasPesos[0] = 0;
-    camino[0] = 0;
+    //relacionPrim[0] = {0,0};
+    //camino[0] = 0;
     caminoInd[0] = -1;
     int minimo;
-
+    int cont = 0;
     for (int j = 0; j < tamano - 1; j++) {
         minimo = menorArista(aristasPesos, visitados, tamano);
         visitados[minimo] = true;
+        cont = 0;
         for (int i = 0; i < tamano; i++) {
             if ((pesos[minimo][i]>0) && (visitados[i] == false) && (pesos[minimo][i]<aristasPesos[i])) {
-                camino[i] = vertices[minimo];
+                relacionPrim.push_back(make_pair(vertices[minimo],vertices[i]));
                 caminoInd[i] = minimo;
                 aristasPesos[i] = pesos[minimo][i];
-
             }
         }
 
@@ -401,7 +402,7 @@ void Algoritmos::prim(gnd &g) {
 
     printf("Edge   Weight\n");
     for (int i = 1; i < tamano; i++) {
-        cout<< g.etiqueta(camino[i])<<"   -" <<i<<"  "<<pesos[i][caminoInd[i]]<<endl;
+        cout<< /*camino[i]->etiqueta */ g.etiqueta(relacionPrim[i].first)<<"   -" <<g.etiqueta(relacionPrim[i].second)<<"  "<<pesos[i][caminoInd[i]]<<endl;
     }
 }
 

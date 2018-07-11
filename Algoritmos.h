@@ -6,7 +6,7 @@
 #define TP2_I_2018_ALGORITMOSGRAFODIRIGIDO_H
 
 #include <iostream>
-
+#include <vector>
 //#include "GrafoDirigListAdy.h"
 //#include "ListaIndexadaLSE.h"
 //#include "GrafoMatriz.h"
@@ -17,11 +17,11 @@
 using namespace std;
 
 
-typedef ListaAdyacencia grafo;
-typedef vertice vert;
+//typedef ListaAdyacencia grafo;
+//typedef vertice vert;
 
-//typedef GrafoMatriz grafo;
-//typedef int vert;
+typedef GrafoMatriz grafo;
+typedef int vert;
 
 typedef GrafoNODirigido gnd;
 
@@ -62,10 +62,11 @@ public:
     //REQ: Grafo NO Dirigido inicializado y no vacio
     //MOD: -
     void hamilton(gnd& g);
-
+  
     //EFE: encuentra el arbol de minimo costo del grafo g
     //REQ: Grafo NO Dirigido inicializado y no vacio
     //MOD: -
+
     void prim(gnd& g);
 
 private:
@@ -85,6 +86,7 @@ private:
     Diccionario dvv;
     Relacion1a1<vert,vert>  relacion1a1;
     Relacion1a1<vert, int> distanciaR;
+    vector <pair<vert,vert>> relacionPrim; /**Se usa para el camino en Prim**/
 
 
 };
